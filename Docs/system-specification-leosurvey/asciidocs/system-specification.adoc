@@ -50,6 +50,12 @@ Es gibt keine schuleinheitliche Plattform für Lehrer oder Schüler um
 Umfragen zu erstellen. Wenn jemand eine Umfrage machen möchte, wird dies
 oft auf unterschiedlichen Plattformen durchgeführt.
 
+=== Datenmodell
+
+[plantuml,wireframe,png]
+
+image::erd.png[]
+
 === Aufgabenstellung
 
 Erstellung eines Moduls für das übergeordnete System LeoLearn, mit dem
@@ -81,10 +87,6 @@ Ein Tool zur Erstellung von Umfragen mithilfe von verschiedenen Fragebögen, zum
 Teilnehmen an diesen Umfragen und zur grafischen und textuellen Auswertung dieser
 Umfragen.
 
-=== Mengengerüst
-
-noch nicht vorhanden
-
 === Rahmenbedingungen
 
  * Es können beliebige Fragebögen (Questionnaire) erstellt werden
@@ -101,14 +103,14 @@ noch nicht vorhanden
     ** Textuelle Darstellung der Freitexte
 
 
-== Entwurf "Wie mache ich es"
+== Entwurf
 === Systemarchitektur
 
 [plantuml,sysarchitecure,png]
 
 image::sysarchitecture.png[]
 
-== Projekthandbuch "Organisatorische Rahmenbedingungen"
+== Projekthandbuch
 
 === GANTT-Diagramm
 
