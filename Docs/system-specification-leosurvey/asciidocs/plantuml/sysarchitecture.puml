@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+actor "User" as u
+rectangle Client as C
+node Server as S
+database PostgreSQL as D
+
+u --> C
+C --> S
+S --> D
+@enduml
