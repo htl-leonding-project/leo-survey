@@ -62,13 +62,6 @@ diese Umfragen auswerten kann.
 
 image::ucd.png[]
 
- * Participating UseCase
- ** Dieser UseCase beschreibt die Funktionen aus der Sicht des Teilnehmers. Er kann
-    an der Umfrage teilnehmen und sich die Ergebnisse der Umfrage anzeigen lassen.
- * Creator UseCase
- ** Dieser UseCase beschreibt die Funktionen von der Seite des Erstellers. Er kann
-    eine Umfrage erstellen, diese Auswerten und sich die Auswertung anzeigen lassen.
-
 ==== Nichtfunktionale Anforderungen (NFA)
 
  * jeder User darf nur einmal pro Umfrage abstimmen
