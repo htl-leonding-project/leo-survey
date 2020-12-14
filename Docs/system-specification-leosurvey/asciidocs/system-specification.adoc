@@ -56,6 +56,12 @@ oft auf unterschiedlichen Plattformen durchgeführt.
 
 image::erd.png[]
 
+=== Systemarchitektur
+
+[plantuml,wireframe,png]
+
+image::sysarchitecture.png[]
+
 === Aufgabenstellung
 
 Erstellung eines Moduls für das übergeordnete System LeoLearn, mit dem

@@ -1,2 +1,2 @@
 
-[System Specs](https://github.com/2021-4ahif-syp/assigment02-system-specification-leosurvey/blob/master/asciidocs/system-specification.adoc)
+[System Specs](https://github.com/htl-leonding-project/leo-survey/blob/master/Docs/system-specification-leosurvey/asciidocs/system-specification.adoc)
