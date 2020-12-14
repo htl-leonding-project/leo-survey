@@ -1,18 +1,11 @@
 @startuml
 left to right direction
-actor "Teacher" as t
-actor "Student" as s
-rectangle "Create Forms" as C
-rectangle "User Forms" as U
-rectangle "Evaluation Form" as E
-node Server as S
+node Browser <<angular>> as B
+node Client as C
+node LeoSurveyBackend <<quarkus>> as LB
 database PostgreSQL as D
 
-t --> C
-s --> U : "via TAN"
-U --> S
-S --> E
-E --> t
-C --> S
-S --> D
+B --> LB
+C --> LB
+LB --> D
 @enduml
