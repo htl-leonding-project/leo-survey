@@ -20,18 +20,18 @@ entity "AnswerOption" as 3 {
     int ao_q_id
 }
 entity "ChosenOption" as 4 {
+    int co_id
     int co_ao_id
     int co_a_id
     int co_q_id
 }
 entity "Answer" as 5 {
-    int qa_id
-    int a_t_id
+    int a_id
     int a_q_id
     String a_answer_text
 }
 entity "S_Transaction" as 6 {
-    int t_id
+    int tr_id
     String t_transactioncode
     boolean t_is_used
     int s_id
