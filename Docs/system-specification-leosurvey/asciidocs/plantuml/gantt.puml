@@ -1,9 +1,9 @@
 @startuml
 printscale weekly
-Project starts the 26th of October 2020
-[project proposal] lasts 1 week
+Project starts the 27th of October 2020
+[project proposal] lasts 3 week
 [project proposal finished] happens at [project proposal]'s end
-[system specs] lasts 3 week
+[system specs] lasts 4 week
 [system specs] starts at [project proposal]'s end
 [system specs finished] happens at [system specs]'s end
 [Projekt aufsetzen] lasts 2 weeks
