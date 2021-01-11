@@ -1,5 +1,6 @@
 package at.htl.leosurvey.control;
 
+import at.htl.leosurvey.entities.AnswerOption;
 import at.htl.leosurvey.entities.Question;
 import at.htl.leosurvey.entities.Survey;
 
@@ -26,13 +27,18 @@ public class SurveyRepository {
 
     public Survey save(Survey survey){
         surveys.add(survey);
-        questionnaireRepository.getQuestionnaires().add(survey.getS_questionnaire());
-        teacherRepository.getTeachers().add(survey.getS_teacher());
-        questionRepository.getQuestions().addAll(Arrays.asList(survey.getS_questionnaire().getQn_questions()));
-        for(Question q : survey.getS_questionnaire().getQn_questions()){
-            answerOptionRepository.getAnswerOptions().addAll(Arrays.asList(q.getQ_answerOptions()));
+        questionnaireRepository.save(survey.getS_questionnaire());
+        teacherRepository.save(survey.getS_teacher());
+        s_transactionRepository.save(survey.getS_transaction());
+        for(Question q : survey.getS_questionnaire().getQn_questions()) {
+            questionRepository.save(q);
         }
-        s_transactionRepository.getS_transactions().add(survey.getS_transaction());
+        for(Question q : survey.getS_questionnaire().getQn_questions()){
+            for(AnswerOption a : q.getQ_answerOptions()){
+                answerOptionRepository.save(a);
+            }
+        }
+
         return survey;
     }
 }
