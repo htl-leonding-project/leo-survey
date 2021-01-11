@@ -3,6 +3,10 @@
 GET http://localhost:8080/survey
 Accept: application/json
 
+### Delete a Survey
+
+DELETE http://localhost:8080/survey/1
+
 ### Get all Questionnaires
 
 GET http://localhost:8080/questionnaire

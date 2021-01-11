@@ -36,4 +36,12 @@ public class SurveyRepository {
     public Survey getSurveyById(int id) {
         return surveys.get(id-1);
     }
+
+    public boolean deleteSurveyById(int id) {
+        if(surveys.get(id-1) != null){
+            surveys.remove(id-1);
+            return true;
+        }
+        return false;
+    }
 }

@@ -41,4 +41,11 @@ public class SurveyEndpoint {
         final Survey survey = repo.getSurveyById(id);
         return Response.ok(survey).build();
     }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteById(@PathParam("id") int id){
+        boolean deleted = repo.deleteSurveyById(id);
+        return Response.ok().build();
+    }
 }
