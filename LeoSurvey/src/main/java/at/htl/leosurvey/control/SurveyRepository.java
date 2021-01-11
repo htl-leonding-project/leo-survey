@@ -15,10 +15,9 @@ import java.util.List;
 @Transactional
 public class SurveyRepository {
     @Inject QuestionnaireRepository questionnaireRepository;
-    @Inject AnswerOptionRepository answerOptionRepository;
-    @Inject QuestionRepository questionRepository;
     @Inject S_TransactionRepository s_transactionRepository;
     @Inject TeacherRepository teacherRepository;
+
     private List<Survey> surveys = new ArrayList<>();
 
     public List<Survey> getSurveys() {
@@ -30,14 +29,6 @@ public class SurveyRepository {
         questionnaireRepository.save(survey.getS_questionnaire());
         teacherRepository.save(survey.getS_teacher());
         s_transactionRepository.save(survey.getS_transaction());
-        for(Question q : survey.getS_questionnaire().getQn_questions()) {
-            questionRepository.save(q);
-        }
-        for(Question q : survey.getS_questionnaire().getQn_questions()){
-            for(AnswerOption a : q.getQ_answerOptions()){
-                answerOptionRepository.save(a);
-            }
-        }
 
         return survey;
     }

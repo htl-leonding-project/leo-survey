@@ -25,4 +25,13 @@ public class QuestionnaireEndpoint {
         final List<Questionnaire> questionnaires =  repo.getQuestionnaires();
         return Response.ok(questionnaires).build();
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response create(Questionnaire questionnaire, @Context UriInfo info){
+        final Questionnaire savedQuestionnaire = repo.save(questionnaire);
+        URI uri = info.getAbsolutePathBuilder().path("/survey/" + savedQuestionnaire.getQn_id()).build();
+        return Response.created(uri).build();
+    }
 }
