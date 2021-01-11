@@ -32,4 +32,8 @@ public class SurveyRepository {
 
         return survey;
     }
+
+    public Survey getSurveyById(int id) {
+        return surveys.get(id-1);
+    }
 }

@@ -29,4 +29,8 @@ public class QuestionnaireRepository {
 
         return questionnaire;
     }
+
+    public Questionnaire getQuestionnaireById(int id) {
+        return questionnaires.get(id-1);
+    }
 }

@@ -31,7 +31,15 @@ public class QuestionnaireEndpoint {
     @Transactional
     public Response create(Questionnaire questionnaire, @Context UriInfo info){
         final Questionnaire savedQuestionnaire = repo.save(questionnaire);
-        URI uri = info.getAbsolutePathBuilder().path("/survey/" + savedQuestionnaire.getQn_id()).build();
+        URI uri = info.getAbsolutePathBuilder().path("" + savedQuestionnaire.getQn_id()).build();
         return Response.created(uri).build();
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findById(@PathParam("id") int id) {
+        final Questionnaire questionnaire = repo.getQuestionnaireById(id);
+        return Response.ok(questionnaire).build();
     }
 }
