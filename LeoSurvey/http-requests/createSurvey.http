@@ -1,8 +1,3 @@
-### Get all Surveys
-
-GET http://localhost:8080/survey
-Accept: application/json
-
 ### Create a new Survey
 
 POST http://localhost:8080/survey
@@ -75,3 +70,13 @@ Content-Type:application/json
     ]
   }
 }
+
+### Get all Surveys
+
+GET http://localhost:8080/survey
+Accept: application/json
+
+### Get all Questionnaires
+
+GET http://localhost:8080/questionnaire
+Accept: application/json
