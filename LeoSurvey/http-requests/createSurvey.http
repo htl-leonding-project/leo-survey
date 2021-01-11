@@ -80,3 +80,23 @@ Accept: application/json
 
 GET http://localhost:8080/questionnaire
 Accept: application/json
+
+### Get all Questions
+
+GET http://localhost:8080/question
+Accept: application/json
+
+### Get all AnswerOptions
+
+GET http://localhost:8080/answeroptions
+Accept: application/json
+
+### Get all Transactions
+
+GET http://localhost:8080/s_transaction
+Accept: application/json
+
+### Get all Teachers
+
+GET http://localhost:8080/teacher
+Accept: application/json
