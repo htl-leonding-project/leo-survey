@@ -1,29 +1,31 @@
 package at.htl.leosurvey.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class AnswerOption {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ao_id;
     private String ao_text;
     private int ao_value; //???
     private int ao_sequenceNumber; //???
-    private boolean ao_isChosen;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Question ao_question;
+
 
     public AnswerOption() {
     }
 
-    public AnswerOption(int ao_id, String ao_text, int ao_value, int ao_sequenceNumber, boolean ao_isChosen) {
-        this.ao_id = ao_id;
+    public AnswerOption(String ao_text, int ao_value, int ao_sequenceNumber, Question ao_question) {
         this.ao_text = ao_text;
         this.ao_value = ao_value;
         this.ao_sequenceNumber = ao_sequenceNumber;
-        this.ao_isChosen = ao_isChosen;
+        this.ao_question = ao_question;
     }
 
     public int getAo_id() {
         return ao_id;
-    }
-
-    public void setAo_id(int ao_id) {
-        this.ao_id = ao_id;
     }
 
     public String getAo_text() {
@@ -50,11 +52,11 @@ public class AnswerOption {
         this.ao_sequenceNumber = ao_sequenceNumber;
     }
 
-    public boolean isAo_isChosen() {
-        return ao_isChosen;
+    public Question getAo_question() {
+        return ao_question;
     }
 
-    public void setAo_isChosen(boolean ao_isChosen) {
-        this.ao_isChosen = ao_isChosen;
+    public void setAo_question(Question ao_question) {
+        this.ao_question = ao_question;
     }
 }
