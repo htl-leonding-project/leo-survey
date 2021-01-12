@@ -1,27 +1,29 @@
 package at.htl.leosurvey.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class S_Transaction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tr_id;
     private String t_transactioncode;
     private boolean t_is_used;
-    private int s_id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Survey t_survey;
 
     public S_Transaction() {
     }
 
-    public S_Transaction(int tr_id, String t_transactioncode, boolean t_is_used, int s_id) {
+    public S_Transaction(int tr_id, String t_transactioncode, boolean t_is_used, Survey t_survey) {
         this.tr_id = tr_id;
         this.t_transactioncode = t_transactioncode;
         this.t_is_used = t_is_used;
-        this.s_id = s_id;
+        this.t_survey = t_survey;
     }
 
     public int getTr_id() {
         return tr_id;
-    }
-
-    public void setTr_id(int tr_id) {
-        this.tr_id = tr_id;
     }
 
     public String getT_transactioncode() {
@@ -40,11 +42,11 @@ public class S_Transaction {
         this.t_is_used = t_is_used;
     }
 
-    public int getS_id() {
-        return s_id;
+    public Survey getT_survey() {
+        return t_survey;
     }
 
-    public void setS_id(int s_id) {
-        this.s_id = s_id;
+    public void setT_survey(Survey t_survey) {
+        this.t_survey = t_survey;
     }
 }
