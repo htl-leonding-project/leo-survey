@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Questionnaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int qn_id;
+    private Long qn_id;
     private String qn_name;
     private String qn_description;
 
@@ -21,7 +21,7 @@ public class Questionnaire {
         this.qn_description = qn_description;
     }
 
-    public int getQn_id() {
+    public Long getQn_id() {
         return qn_id;
     }
 

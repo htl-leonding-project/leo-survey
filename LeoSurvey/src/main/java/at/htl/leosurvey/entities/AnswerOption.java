@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class AnswerOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ao_id;
+    private Long ao_id;
     private String ao_text;
     private int ao_value; //???
     private int ao_sequenceNumber; //???
@@ -24,7 +24,7 @@ public class AnswerOption {
         this.ao_question = ao_question;
     }
 
-    public int getAo_id() {
+    public Long getAo_id() {
         return ao_id;
     }
 

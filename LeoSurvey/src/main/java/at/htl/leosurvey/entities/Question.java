@@ -7,7 +7,7 @@ import java.sql.Blob;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int q_id;
+    private Long q_id;
     private String q_text;
     //private Blob q_image;
     private int q_sequenceNumber; //???
@@ -26,7 +26,7 @@ public class Question {
         this.q_questionnaire = q_questionnaire;
     }
 
-    public int getQ_id() {
+    public Long getQ_id() {
         return q_id;
     }
 
