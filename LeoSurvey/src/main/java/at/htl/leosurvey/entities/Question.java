@@ -1,33 +1,33 @@
 package at.htl.leosurvey.entities;
 
+import javax.persistence.*;
 import java.sql.Blob;
 
+@Entity
 public class Question {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int q_id;
     private String q_text;
-    private Blob q_image;
+    //private Blob q_image;
     private int q_sequenceNumber; //???
     private QuestionType q_type;
-    private AnswerOption[] q_answerOptions;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Questionnaire q_questionnaire;
 
     public Question() {
     }
 
-    public Question(int q_id, String q_text, Blob q_image, int q_sequenceNumber, QuestionType q_type, AnswerOption[] q_answerOptions) {
-        this.q_id = q_id;
+    public Question(String q_text, /*Blob q_image,*/ int q_sequenceNumber, QuestionType q_type, Questionnaire q_questionnaire) {
         this.q_text = q_text;
-        this.q_image = q_image;
+        //this.q_image = q_image;
         this.q_sequenceNumber = q_sequenceNumber;
         this.q_type = q_type;
-        this.q_answerOptions = q_answerOptions;
+        this.q_questionnaire = q_questionnaire;
     }
 
     public int getQ_id() {
         return q_id;
-    }
-
-    public void setQ_id(int q_id) {
-        this.q_id = q_id;
     }
 
     public String getQ_text() {
@@ -38,13 +38,13 @@ public class Question {
         this.q_text = q_text;
     }
 
-    public Blob getQ_image() {
-        return q_image;
-    }
+    //public Blob getQ_image() {
+    //    return q_image;
+    //}
 
-    public void setQ_image(Blob q_image) {
-        this.q_image = q_image;
-    }
+    //public void setQ_image(Blob q_image) {
+    //    this.q_image = q_image;
+    //}
 
     public int getQ_sequenceNumber() {
         return q_sequenceNumber;
@@ -62,11 +62,11 @@ public class Question {
         this.q_type = q_type;
     }
 
-    public AnswerOption[] getQ_answerOptions() {
-        return q_answerOptions;
+    public Questionnaire getQ_questionnaire() {
+        return q_questionnaire;
     }
 
-    public void setQ_answerOptions(AnswerOption[] q_answerOptions) {
-        this.q_answerOptions = q_answerOptions;
+    public void setQ_questionnaire(Questionnaire q_questionnaire) {
+        this.q_questionnaire = q_questionnaire;
     }
 }
