@@ -1,23 +1,26 @@
 package at.htl.leosurvey.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Teacher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int t_id;
     private String t_name;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Survey t_survey;
 
     public Teacher() {
     }
 
-    public Teacher(int t_id, String t_name) {
-        this.t_id = t_id;
+    public Teacher(String t_name, Survey t_survey) {
         this.t_name = t_name;
+        this.t_survey = t_survey;
     }
 
     public int getT_id() {
         return t_id;
-    }
-
-    public void setT_id(int t_id) {
-        this.t_id = t_id;
     }
 
     public String getT_name() {
@@ -26,5 +29,13 @@ public class Teacher {
 
     public void setT_name(String t_name) {
         this.t_name = t_name;
+    }
+
+    public Survey getT_survey() {
+        return t_survey;
+    }
+
+    public void setT_survey(Survey t_survey) {
+        this.t_survey = t_survey;
     }
 }
