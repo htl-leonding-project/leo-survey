@@ -35,7 +35,7 @@ class QuestionnaireTest {
     }
 
     @Test
-    void createAQuestionnaireTest() throws SystemException, NotSupportedException,
+    void createQuestionnaireTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         tm.begin();

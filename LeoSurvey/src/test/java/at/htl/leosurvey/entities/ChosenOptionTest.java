@@ -34,7 +34,7 @@ class ChosenOptionTest {
     }
 
     @Test
-    void createAnswerTest() throws SystemException, NotSupportedException,
+    void createChosenOptionTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE, q);

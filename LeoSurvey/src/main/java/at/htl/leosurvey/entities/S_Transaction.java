@@ -15,8 +15,7 @@ public class S_Transaction {
     public S_Transaction() {
     }
 
-    public S_Transaction(int tr_id, String t_transactioncode, boolean t_is_used, Survey t_survey) {
-        this.tr_id = tr_id;
+    public S_Transaction(String t_transactioncode, boolean t_is_used, Survey t_survey) {
         this.t_transactioncode = t_transactioncode;
         this.t_is_used = t_is_used;
         this.t_survey = t_survey;
