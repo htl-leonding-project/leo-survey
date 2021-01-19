@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Questionnaire {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long qn_id;
     private String qn_name;
     private String qn_description;

@@ -16,6 +16,10 @@ public class QuestionnaireRepository implements PanacheRepository<Questionnaire>
 
     @Transactional
     public void delete(long id){
-        delete(find("id",id).singleResult());
+        delete(findById(id));
+    }
+
+    public Questionnaire findById(long id){
+        return find("id",id).singleResult();
     }
 }
