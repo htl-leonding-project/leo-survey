@@ -39,5 +39,10 @@ public class QuestionRepositoryTest {
                 .value().isEqualTo(1);
     }
 
-
+    @Test
+    @Order(20)
+    void deleteQuestionTest(){
+        questionRepository.delete(1);
+        assertThat(t).hasNumberOfRows(0);
+    }
 }
