@@ -24,6 +24,8 @@ public class QuestionnaireRepositoryTest {
     @Inject
     UserTransaction userTransaction;
 
+    Table t = new Table(DataSource.getDataSource(), "questionnaire");
+
     @Test
     @Order(10)
     void createQuestionnaireTest(){
@@ -39,6 +41,13 @@ public class QuestionnaireRepositoryTest {
                 .column("qn_description")
                 .value().isEqualTo("Test of the Questionnaire");
 
+    }
+
+    @Test
+    @Order(20)
+    void deleteQuestionnaireTest(){
+        questionnaireRepository.delete(1);
+        assertThat(t).hasNumberOfRows(0);
     }
 
 }
