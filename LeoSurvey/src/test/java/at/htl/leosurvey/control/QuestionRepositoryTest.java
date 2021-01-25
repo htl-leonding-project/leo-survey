@@ -5,6 +5,7 @@ import at.htl.leosurvey.entities.QuestionType;
 import at.htl.leosurvey.entities.Questionnaire;
 import io.quarkus.test.junit.QuarkusTest;
 import org.assertj.db.type.Table;
+import org.assertj.db.type.Value;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,10 @@ import org.junit.jupiter.api.TestMethodOrder;
 import at.htl.leosurvey.misc.DataSource;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import java.util.List;
 
 import static org.assertj.db.api.Assertions.assertThat;
 
@@ -19,10 +24,14 @@ import static org.assertj.db.api.Assertions.assertThat;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class QuestionRepositoryTest {
 
+    @PersistenceContext
+    EntityManager em;
+
     @Inject
     QuestionRepository questionRepository;
 
     Table t = new Table(DataSource.getDataSource(), "question");
+    Table questionnaire = new Table(DataSource.getDataSource(), "questionnaire");
 
     @Test
     @Order(10)
@@ -48,11 +57,21 @@ public class QuestionRepositoryTest {
 
     @Test
     @Order(30)
-    void createMultipleChoiceQuestion(){
+    void createMultipleChoiceQuestionTest(){
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         Question qu = new Question("MultipleChoice Question", 1, QuestionType.MULTIPLECHOICE, q);
 
         questionRepository.save(qu);
         assertThat(t).column(3).containsValues(1);
+    }
+
+    @Test
+    @Order(40)
+    void createYESORNOQuestionText(){
+
+        Question qu = new Question("YESORNO", 1, QuestionType.YESORNO, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
+
+        questionRepository.save(qu);
+        assertThat(t).row(1).column(3).value().equals(2);
     }
 }
