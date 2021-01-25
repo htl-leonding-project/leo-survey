@@ -67,11 +67,20 @@ public class QuestionRepositoryTest {
 
     @Test
     @Order(40)
-    void createYESORNOQuestionText(){
+    void createYESORNOQuestionTest(){
 
         Question qu = new Question("YESORNO", 1, QuestionType.YESORNO, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
 
         questionRepository.save(qu);
         assertThat(t).row(1).column(3).value().equals(2);
+    }
+
+    @Test
+    @Order(66)
+    void createFreetextQuestionTest(){
+        Question qu = new Question("Freetext Question", 1, QuestionType.FREETEXT, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
+
+        questionRepository.save(qu);
+        assertThat(t).row(2).column(3).value().equals(3);
     }
 }
