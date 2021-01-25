@@ -45,4 +45,14 @@ public class QuestionRepositoryTest {
         questionRepository.delete(1);
         assertThat(t).hasNumberOfRows(0);
     }
+
+    @Test
+    @Order(30)
+    void createMultipleChoiceQuestion(){
+        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Question qu = new Question("MultipleChoice Question", 1, QuestionType.MULTIPLECHOICE, q);
+
+        questionRepository.save(qu);
+        assertThat(t).column(3).containsValues(1);
+    }
 }
