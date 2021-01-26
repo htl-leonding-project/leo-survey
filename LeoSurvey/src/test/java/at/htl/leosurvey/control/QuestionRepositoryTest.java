@@ -44,7 +44,7 @@ public class QuestionRepositoryTest {
                 .value().isEqualTo(1)
                 .value().isEqualTo(1)
                 .value().isEqualTo("Yes or No")
-                .value().isEqualTo(0)
+                .value().isEqualTo("SINGLECHOICE")
                 .value().isEqualTo(1);
     }
 
@@ -62,17 +62,17 @@ public class QuestionRepositoryTest {
         Question qu = new Question("MultipleChoice Question", 1, QuestionType.MULTIPLECHOICE.name(), q);
 
         questionRepository.save(qu);
-        assertThat(t).column(3).containsValues(1);
+        assertThat(t).row(0).column(3).value().equals("MULTIPLECHOICE");
     }
 
     @Test
     @Order(40)
     void createYESORNOQuestionTest(){
 
-        Question qu = new Question("YESORNO", 1, QuestionType.YESORNO.name(), (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
+        Question qu = new Question("YESORNO Question", 1, QuestionType.YESORNO.name(), (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
 
         questionRepository.save(qu);
-        assertThat(t).row(1).column(3).value().equals(2);
+        assertThat(t).row(1).column(3).value().equals("YESORNO");
     }
 
     @Test
@@ -82,6 +82,6 @@ public class QuestionRepositoryTest {
         Question qu = new Question("Freetext Question", 1, QuestionType.FREETEXT.name(), (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
 
         questionRepository.save(qu);
-        assertThat(t).row(2).column(3).value().equals(3);
+        assertThat(t).row(2).column(3).value().equals("FREETEXT");
     }
 }
