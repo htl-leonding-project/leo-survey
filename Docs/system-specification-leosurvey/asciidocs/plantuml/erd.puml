@@ -30,7 +30,7 @@ entity "Answer" as 5 {
     int a_q_id
     String a_answer_text
 }
-entity "S_Transaction" as 6 {
+entity "Transaction" as 6 {
     int tr_id
     String t_transactioncode
     boolean t_is_used
@@ -39,7 +39,7 @@ entity "S_Transaction" as 6 {
 entity QuestionType {
     SINGLECHOICE
     MULTIPLE CHOICE
-    CHECKBOX
+    YESORNO
     FREETEXT
 }
 
