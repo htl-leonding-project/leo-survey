@@ -26,8 +26,8 @@ class QuestionTest {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         tm.begin();
         em.persist(q);
-        em.persist(new Question("Yes or No", 1, QuestionType.SINGLECHOICE, q));
-        em.persist(new Question("No or Yes", 2, QuestionType.SINGLECHOICE, q));
+        em.persist(new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q));
+        em.persist(new Question("No or Yes", 2, QuestionType.SINGLECHOICE.name(), q));
         tm.commit();
         Table questions = new Table(DataSource.getDataSource(), "question");
         assertThat(questions).hasNumberOfRows(2);
@@ -35,7 +35,7 @@ class QuestionTest {
                 .value().isEqualTo(1)
                 .value().isEqualTo(1)
                 .value().isEqualTo("Yes or No")
-                .value().isEqualTo(0)
+                .value().isEqualTo("SINGLECHOICE")
                 .value().isEqualTo(1);
     }
 }

@@ -37,7 +37,7 @@ public class QuestionRepositoryTest {
     @Order(10)
     void createQuestionTest(){
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
-        Question qu = new Question("Yes or No", 1, QuestionType.SINGLECHOICE, q);
+        Question qu = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
 
         questionRepository.save(qu);
         assertThat(t).row(0)
@@ -59,7 +59,7 @@ public class QuestionRepositoryTest {
     @Order(30)
     void createMultipleChoiceQuestionTest(){
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
-        Question qu = new Question("MultipleChoice Question", 1, QuestionType.MULTIPLECHOICE, q);
+        Question qu = new Question("MultipleChoice Question", 1, QuestionType.MULTIPLECHOICE.name(), q);
 
         questionRepository.save(qu);
         assertThat(t).column(3).containsValues(1);
@@ -69,7 +69,7 @@ public class QuestionRepositoryTest {
     @Order(40)
     void createYESORNOQuestionTest(){
 
-        Question qu = new Question("YESORNO", 1, QuestionType.YESORNO, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
+        Question qu = new Question("YESORNO", 1, QuestionType.YESORNO.name(), (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
 
         questionRepository.save(qu);
         assertThat(t).row(1).column(3).value().equals(2);
@@ -79,7 +79,7 @@ public class QuestionRepositoryTest {
     @Order(66)
     void createFreetextQuestionTest(){
 
-        Question qu = new Question("Freetext Question", 1, QuestionType.FREETEXT, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
+        Question qu = new Question("Freetext Question", 1, QuestionType.FREETEXT.name(), (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
 
         questionRepository.save(qu);
         assertThat(t).row(2).column(3).value().equals(3);

@@ -11,14 +11,14 @@ public class Question {
     private String q_text;
     //private Blob q_image;
     private int q_sequenceNumber; //???
-    private QuestionType q_type;
+    private String q_type;
     @ManyToOne(cascade = CascadeType.ALL)
     private Questionnaire q_questionnaire;
 
     public Question() {
     }
 
-    public Question(String q_text, /*Blob q_image,*/ int q_sequenceNumber, QuestionType q_type, Questionnaire q_questionnaire) {
+    public Question(String q_text, /*Blob q_image,*/ int q_sequenceNumber, String q_type, Questionnaire q_questionnaire) {
         this.q_text = q_text;
         //this.q_image = q_image;
         this.q_sequenceNumber = q_sequenceNumber;
@@ -54,11 +54,11 @@ public class Question {
         this.q_sequenceNumber = q_sequenceNumber;
     }
 
-    public QuestionType getQ_type() {
+    public String getQ_type() {
         return q_type;
     }
 
-    public void setQ_type(QuestionType q_type) {
+    public void setQ_type(String q_type) {
         this.q_type = q_type;
     }
 

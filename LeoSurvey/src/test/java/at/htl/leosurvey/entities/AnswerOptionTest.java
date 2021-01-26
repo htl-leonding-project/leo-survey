@@ -24,7 +24,7 @@ class AnswerOptionTest {
     void createAnswerOptionsTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
-        Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE, q);
+        Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
         tm.begin();
         em.persist(q);
         em.persist(qn);
