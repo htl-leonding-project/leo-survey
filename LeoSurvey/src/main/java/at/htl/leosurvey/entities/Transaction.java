@@ -3,7 +3,7 @@ package at.htl.leosurvey.entities;
 import javax.persistence.*;
 
 @Entity
-public class S_Transaction {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tr_id;
@@ -12,10 +12,10 @@ public class S_Transaction {
     @ManyToOne(cascade = CascadeType.ALL)
     private Survey t_survey;
 
-    public S_Transaction() {
+    public Transaction() {
     }
 
-    public S_Transaction(String t_transactioncode, boolean t_is_used, Survey t_survey) {
+    public Transaction(String t_transactioncode, boolean t_is_used, Survey t_survey) {
         this.t_transactioncode = t_transactioncode;
         this.t_is_used = t_is_used;
         this.t_survey = t_survey;

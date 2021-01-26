@@ -2,7 +2,6 @@ package at.htl.leosurvey.entities;
 
 import at.htl.leosurvey.misc.DataSource;
 import io.quarkus.test.junit.QuarkusTest;
-import org.apache.derby.jdbc.ClientDataSource;
 import org.assertj.db.type.Table;
 import org.junit.jupiter.api.Test;
 
@@ -12,17 +11,16 @@ import javax.transaction.*;
 import java.time.LocalDate;
 
 import static org.assertj.db.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
-class S_TransactionTest {
+class TransactionTest {
     @Inject
     EntityManager em;
     @Inject
     UserTransaction tm;
 
     @Test
-    void createS_TransactionTest() throws SystemException, NotSupportedException,
+    void createTransactionTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         LocalDate dt = LocalDate.now();
@@ -30,7 +28,7 @@ class S_TransactionTest {
         tm.begin();
         em.persist(q);
         em.persist(survey);
-        em.persist(new S_Transaction("abc", false, survey));
+        em.persist(new Transaction("abc", false, survey));
         tm.commit();
         Table transactions = new Table(DataSource.getDataSource(), "s_transaction");
         assertThat(transactions).row(0)
