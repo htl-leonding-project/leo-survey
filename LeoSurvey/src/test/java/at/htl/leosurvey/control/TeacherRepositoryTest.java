@@ -23,6 +23,8 @@ public class TeacherRepositoryTest {
     @Inject
     TeacherRepository teacherRepository;
 
+    Table teacher = new Table(DataSource.getDataSource(), "teacher");
+
     @Test
     @Order(10)
     void createTeacherTest(){
@@ -30,7 +32,6 @@ public class TeacherRepositoryTest {
         LocalDate dt = LocalDate.now();
         Survey s = new Survey(dt, q);
         teacherRepository.save(new Teacher("Teach", s));
-        Table teacher = new Table(DataSource.getDataSource(), "teacher");
         assertThat(teacher).row(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo("Teach")
