@@ -13,14 +13,14 @@ import java.time.LocalDate;
 import static org.assertj.db.api.Assertions.assertThat;
 
 @QuarkusTest
-class TransactionTest {
+class S_TransactionTest {
     @Inject
     EntityManager em;
     @Inject
     UserTransaction tm;
 
     @Test
-    void createTransactionTest() throws SystemException, NotSupportedException,
+    void createS_TransactionTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         LocalDate dt = LocalDate.now();
@@ -28,7 +28,7 @@ class TransactionTest {
         tm.begin();
         em.persist(q);
         em.persist(survey);
-        em.persist(new Transaction("abc", false, survey));
+        em.persist(new S_Transaction("abc", false, survey));
         tm.commit();
         Table transactions = new Table(DataSource.getDataSource(), "s_transaction");
         assertThat(transactions).row(0)

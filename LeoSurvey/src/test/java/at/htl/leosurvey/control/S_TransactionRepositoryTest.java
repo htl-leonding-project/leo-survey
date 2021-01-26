@@ -2,7 +2,7 @@ package at.htl.leosurvey.control;
 
 import at.htl.leosurvey.entities.Questionnaire;
 import at.htl.leosurvey.entities.Survey;
-import at.htl.leosurvey.entities.Transaction;
+import at.htl.leosurvey.entities.S_Transaction;
 import at.htl.leosurvey.misc.DataSource;
 import io.quarkus.test.junit.QuarkusTest;
 import org.assertj.db.type.Table;
@@ -12,16 +12,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
 
 import static org.assertj.db.api.Assertions.assertThat;
 
 @QuarkusTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TransactionRepositoryTest {
+public class S_TransactionRepositoryTest {
 
     @Inject
-    TransactionRepository transactionRepository;
+    S_TransactionRepository transactionRepository;
 
     @Inject
     QuestionnaireRepository questionnaireRepository;
@@ -30,6 +32,9 @@ public class TransactionRepositoryTest {
     SurveyRepository surveyRepository;
 
     Table transactions = new Table(DataSource.getDataSource(), "s_transaction");
+
+    @PersistenceContext
+    EntityManager em;
 
     @Test
     @Order(10)
@@ -40,7 +45,7 @@ public class TransactionRepositoryTest {
 
         questionnaireRepository.save(q);
         surveyRepository.save(survey);
-        transactionRepository.save(new Transaction("abc", false, survey));
+        transactionRepository.save(new S_Transaction("abc", false, (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult()));
         assertThat(transactions).row(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo(false)
