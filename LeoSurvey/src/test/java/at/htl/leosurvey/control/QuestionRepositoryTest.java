@@ -78,6 +78,7 @@ public class QuestionRepositoryTest {
     @Test
     @Order(66)
     void createFreetextQuestionTest(){
+
         Question qu = new Question("Freetext Question", 1, QuestionType.FREETEXT, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 2").getSingleResult());
 
         questionRepository.save(qu);
