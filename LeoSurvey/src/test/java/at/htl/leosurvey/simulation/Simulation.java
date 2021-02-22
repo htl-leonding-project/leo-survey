@@ -1,5 +1,6 @@
-package at.htl.leosurvey.control;
+package at.htl.leosurvey.simulation;
 
+import at.htl.leosurvey.control.*;
 import at.htl.leosurvey.entities.*;
 import at.htl.leosurvey.misc.DataSource;
 import io.quarkus.test.junit.QuarkusTest;
@@ -53,11 +54,11 @@ public class Simulation {
         Survey s = new Survey(d, (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
         surveyRepository.save(s);
 
-        S_Transaction s_t1 = new S_Transaction("abc", false,
+        S_Transaction s_t1 = new S_Transaction(false,
                 (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
-        S_Transaction s_t2 = new S_Transaction("def", false,
+        S_Transaction s_t2 = new S_Transaction(false,
                 (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
-        S_Transaction s_t3 = new S_Transaction("ghi", false,
+        S_Transaction s_t3 = new S_Transaction(false,
                 (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
         s_transactionRepository.save(s_t1);
         s_transactionRepository.save(s_t2);

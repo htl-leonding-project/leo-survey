@@ -45,7 +45,7 @@ public class S_TransactionRepositoryTest {
 
         questionnaireRepository.save(q);
         surveyRepository.save(survey);
-        transactionRepository.save(new S_Transaction("abc", false, (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult()));
+        transactionRepository.save(new S_Transaction(false, (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult()));
         assertThat(transactions).row(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo(false)

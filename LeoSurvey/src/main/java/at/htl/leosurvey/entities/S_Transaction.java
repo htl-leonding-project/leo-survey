@@ -1,6 +1,7 @@
 package at.htl.leosurvey.entities;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @Entity
 public class S_Transaction {
@@ -15,8 +16,8 @@ public class S_Transaction {
     public S_Transaction() {
     }
 
-    public S_Transaction(String t_transactioncode, boolean t_is_used, Survey t_survey) {
-        this.t_transactioncode = t_transactioncode;
+    public S_Transaction(boolean t_is_used, Survey t_survey) {
+        this.t_transactioncode = generateTransactionCode();
         this.t_is_used = t_is_used;
         this.t_survey = t_survey;
     }
@@ -47,5 +48,15 @@ public class S_Transaction {
 
     public void setT_survey(Survey t_survey) {
         this.t_survey = t_survey;
+    }
+
+    public String generateTransactionCode(){
+        Random r = new Random();
+        String back = "";
+        for(int i = 0; i < 16; i++){
+            char c = (char)(r.nextInt(26) + 'a');
+            back += c;
+        }
+        return back;
     }
 }
