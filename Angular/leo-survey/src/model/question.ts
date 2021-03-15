@@ -1,6 +1,6 @@
 export class Question{
   constructor(
-    question: String,
-    answerOptions: String[]
+    public q_text: String,
+    public answer_options: String []
   ){}
 }

@@ -1,0 +1,21 @@
+<table mat-table [dataSource]="dataSource">
+  <!-- q_text -->
+  <ng-container matColumnDef="q_text">
+    <th mat-header-cell *matHeaderCellDef> Questions </th>
+    <td mat-cell *matCellDef="let question">{{ question.q_text }}</td>
+  </ng-container>
+  <ng-container>
+    <td>
+      <button
+        mat-raised-button
+        color="secondary"
+        class="mdc-button mdc-button--outlined"
+        (click)="load()"
+      >
+        Load
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>
