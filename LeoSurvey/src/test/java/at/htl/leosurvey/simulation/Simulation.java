@@ -44,6 +44,7 @@ public class Simulation {
     Table s_table = new Table(DataSource.getDataSource(), "survey");
     Table t_table = new Table(DataSource.getDataSource(), "teacher");
 
+
     @Test
     @Order(10)
     void createFullSurvey(){
