@@ -1,0 +1,9 @@
+### Get all Questions
+
+GET http://localhost:8080/leosurvey/questions
+Accept: application/json
+
+### Get all AnswerOptions
+
+GET http://localhost:8080/leosurvey/options
+Accept: application/json

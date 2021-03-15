@@ -1,0 +1,40 @@
+package at.htl.leosurvey.boundary;
+
+import at.htl.leosurvey.control.AnswerOptionRepository;
+import at.htl.leosurvey.control.QuestionRepository;
+import at.htl.leosurvey.entities.AnswerOption;
+import at.htl.leosurvey.entities.Question;
+
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.awt.*;
+import java.util.List;
+
+@Path("leosurvey")
+public class RESTTest {
+    @Inject
+    QuestionRepository questionRepository;
+
+    @Inject
+    AnswerOptionRepository answerOptionRepository;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/questions")
+    public Response findAllQuestions(){
+        final List<Question> questions = questionRepository.findAllQuestions();
+        return Response.ok(questions).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/options")
+    public Response findAllOptions(){
+        final List<AnswerOption> options = answerOptionRepository.findAllOptions();
+        return Response.ok(options).build();
+    }
+}

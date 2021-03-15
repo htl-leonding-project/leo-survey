@@ -5,6 +5,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @ApplicationScoped
 public class QuestionRepository implements PanacheRepository<Question> {
@@ -17,5 +18,9 @@ public class QuestionRepository implements PanacheRepository<Question> {
     @Transactional
     public void delete(long id){
         delete(find("id",id).singleResult());
+    }
+
+    public List<Question> findAllQuestions(){
+        return listAll();
     }
 }
