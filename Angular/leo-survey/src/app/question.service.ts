@@ -5,8 +5,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class QuestionService {
-  questions: Question[];
+  private questions: Question[];
   constructor() {
     this.questions = [];
+  }
+  setQuestions(data: Question[]): void{
+    this.questions = data;
+  }
+  getQuestions(): Question[]{
+    return this.questions;
   }
 }

@@ -1,13 +1,4 @@
-<button
-  mat-raised-button
-  color="secondary"
-  class="mdc-button mdc-button--outlined"
-  (click)="load()"
-  >
-  Load Questions
-</button>
-<app-questions></app-questions>
-<!--<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource">
 
   <ng-container matColumnDef="q_text">
     <th mat-header-cell *matHeaderCellDef> Question </th>
@@ -16,4 +7,4 @@
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-</table>-->
+</table>
