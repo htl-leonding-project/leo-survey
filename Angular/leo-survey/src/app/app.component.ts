@@ -1,3 +1,4 @@
+import { AnswerOption } from './../model/answer-option';
 import { QuestionService } from './question.service';
 import { Question } from './../model/question';
 import { Component } from '@angular/core';
@@ -13,19 +14,26 @@ import { QuestionsComponent } from './questions/questions.component';
 export class AppComponent {
   title = 'leo-survey';
 
-  //dataSource: MatTableDataSource<Question>;
-  //columnsToDisplay: string[] = ['q_text'];
+  questionsDataSource: MatTableDataSource<Question>;
+  optionsDataSource: MatTableDataSource<AnswerOption>;
+  columnsToDisplayQuestions: string[] = ['q_text'];
+  columnsToDisplayOptions: string[] = ['answer_options'];
 
   constructor(private httpClient: HttpClient, public service: QuestionService, public qc: QuestionsComponent) {
-    //this.dataSource = new MatTableDataSource<Question>();
+    this.questionsDataSource = new MatTableDataSource<Question>();
+    this.optionsDataSource = new MatTableDataSource<AnswerOption>();
   }
 
   async load(): Promise<void> {
     const data : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
-    const options : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/options').toPromise();
+    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
+    console.log(data);
+    console.log(options);
 
     this.service.setQuestions(data);
-    //this.dataSource.data=[...this.service.getQuestions()];
-    this.qc.onLoad();
+    this.service.setOptions(options);
+    this.questionsDataSource.data=[...this.service.getQuestions()];
+    this.optionsDataSource.data=[...this.service.getOptions()];
+    //this.qc.onLoad();
   }
 }
