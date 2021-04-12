@@ -293,7 +293,7 @@ public class InitBean {
         }
 
         //Answer Options for Question 31
-        Question question = query.setParameter(1, Long.valueOf(31)).getSingleResult();
+        Question question = query.setParameter(1, Long.valueOf(40)).getSingleResult();
         AnswerOption a1 = new AnswerOption("sehr zufrieden", 1, 1, question);
         AnswerOption a2 = new AnswerOption("eher zufrieden", 2, 2, question);
         AnswerOption a3 = new AnswerOption("mittelmäßig zufrieden", 3, 3, question);

@@ -28,8 +28,6 @@ export class AppComponent {
   async load(): Promise<void> {
     const questions : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
     const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
-    console.log(questions);
-    console.log(options);
 
     this.service.setQuestions(questions);
     this.service.setOptions(options);
@@ -45,6 +43,7 @@ export class AppComponent {
       this.service.setOneQuestion(this.fq);
     }
     this.dataSource.data=[...this.service.getFullQuestions()];
+    console.log(this.service.getFullQuestions());
     //this.qc.onLoad();
   }
 }
