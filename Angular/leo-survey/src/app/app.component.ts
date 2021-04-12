@@ -4,7 +4,6 @@ import { Question } from './../model/question';
 import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
-import { QuestionsComponent } from './questions/questions.component';
 import { FullQuestion } from 'src/model/full-question';
 import { ThisReceiver } from '@angular/compiler';
 
@@ -16,19 +15,13 @@ import { ThisReceiver } from '@angular/compiler';
 export class AppComponent {
   title = 'leo-survey';
 
-  questionsDataSource: MatTableDataSource<Question>;
-  optionsDataSource: MatTableDataSource<AnswerOption>;
   dataSource: MatTableDataSource<FullQuestion>;
-  columnsToDisplayQuestions: string[] = ['q_text'];
-  columnsToDisplayOptions: string[] = ['answer_options'];
   columnsToDisplay: string[] = ['q_text', 'q_options'];
 
   fq: FullQuestion;
   answeroptions: AnswerOption[];
 
-  constructor(private httpClient: HttpClient, public service: QuestionService, public qc: QuestionsComponent) {
-    this.questionsDataSource = new MatTableDataSource<Question>();
-    this.optionsDataSource = new MatTableDataSource<AnswerOption>();
+  constructor(private httpClient: HttpClient, public service: QuestionService) {
     this.dataSource = new MatTableDataSource<FullQuestion>();
   }
 
@@ -51,8 +44,6 @@ export class AppComponent {
       this.fq = new FullQuestion(q.q_id, q.q_text, q.q_sequenceNumber, q.q_Type, q.q_Questionnaire, this.answeroptions);
       this.service.setOneQuestion(this.fq);
     }
-    this.questionsDataSource.data=[...this.service.getQuestions()];
-    this.optionsDataSource.data=[...this.service.getOptions()];
     this.dataSource.data=[...this.service.getFullQuestions()];
     //this.qc.onLoad();
   }

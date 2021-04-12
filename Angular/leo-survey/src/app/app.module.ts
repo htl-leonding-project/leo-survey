@@ -5,19 +5,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { QuestionsComponent } from './questions/questions.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    QuestionsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     MatTableModule
   ],
-  providers: [QuestionsComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
