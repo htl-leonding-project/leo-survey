@@ -1,3 +1,4 @@
+import { FullQuestion } from './../model/full-question';
 import { AnswerOption } from './../model/answer-option';
 import { Question } from './../model/question';
 import { Injectable } from '@angular/core';
@@ -8,9 +9,11 @@ import { Injectable } from '@angular/core';
 export class QuestionService {
   private questions: Question[];
   private options: AnswerOption[];
+  private fullquestions: FullQuestion[];
   constructor() {
     this.questions = [];
     this.options = [];
+    this.fullquestions = [];
   }
   setQuestions(data: Question[]): void{
     this.questions = data;
@@ -23,5 +26,14 @@ export class QuestionService {
   }
   getOptions(): AnswerOption[]{
     return this.options;
+  }
+  setFullQuestions(data: FullQuestion[]): void{
+    this.fullquestions = data;
+  }
+  getFullQuestions(): FullQuestion[]{
+    return this.fullquestions;
+  }
+  setOneQuestion(data: FullQuestion): void{
+    this.fullquestions.push(data);
   }
 }

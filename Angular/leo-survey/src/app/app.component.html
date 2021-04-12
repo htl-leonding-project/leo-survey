@@ -7,7 +7,7 @@
   Load Questions
 </button>
 <!--<app-questions></app-questions>-->
-<div>
+<!--<div>
   <mat-table style="float:left" [dataSource]="questionsDataSource">
 
     <ng-container matColumnDef="q_text">
@@ -22,11 +22,31 @@
   <mat-table style="float: left;" [dataSource]="optionsDataSource">
 
     <ng-container matColumnDef="answer_options">
-      <th mat-header-cell *matHeaderCellDef> Options </th>
+      <th mat-header-cell *matHeaderCellDef> Option</th>
       <td mat-cell *matCellDef="let option">{{ option.ao_text }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplayOptions"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplayOptions;"></tr>
+  </mat-table>
+</div>-->
+
+
+<div>
+  <mat-table style="float:left" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="q_text">
+      <th mat-header-cell *matHeaderCellDef> Questions </th>
+      <td mat-cell *matCellDef="let question">{{ question.q_text }}</td>
+    </ng-container>
+    <ng-container matColumnDef="q_options">
+      <th mat-header-cell *matHeaderCellDef> Option </th>
+      <td mat-cell *matCellDef="let option">
+        <ng-container *ngFor="let o of option.q_options">{{ o.ao_text }}</ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
   </mat-table>
 </div>
