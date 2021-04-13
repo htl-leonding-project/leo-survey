@@ -1,5 +1,6 @@
 package at.htl.leosurvey.boundary;
 
+//region imports
 import at.htl.leosurvey.control.AnswerOptionRepository;
 import at.htl.leosurvey.control.ChosenOptionRepository;
 import at.htl.leosurvey.control.QuestionRepository;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.UriInfo;
 import java.awt.*;
 import java.net.URI;
 import java.util.List;
+//endregion
 
 @Path("leosurvey")
 public class RESTTest {
