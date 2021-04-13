@@ -1,11 +1,15 @@
+import { ChosenOption } from './../model/chosen-option';
+import { Question } from 'src/model/question';
+import { Answer } from 'src/model/answer';
 import { AnswerOption } from './../model/answer-option';
 import { QuestionService } from './question.service';
-import { Question } from './../model/question';
 import { Component } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { FullQuestion } from 'src/model/full-question';
 import { ThisReceiver } from '@angular/compiler';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -45,5 +49,15 @@ export class AppComponent {
     this.dataSource.data=[...this.service.getFullQuestions()];
     console.log(this.service.getFullQuestions());
     //this.qc.onLoad();
+  }
+
+  pushOption(question: Question, option: AnswerOption): void{
+    let back_answer: Answer = new Answer(question.q_id, option.ao_text, question);
+    let back_chosenOption: ChosenOption = new ChosenOption(question.q_id, option, back_answer, question)
+    this.chooseOption(back_chosenOption).subscribe();
+  }
+
+  chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption>{
+    return this.httpClient.post<ChosenOption>('http://localhost:8080/leosurvey/chosenoptions/add', back_chosenOption);
   }
 }
