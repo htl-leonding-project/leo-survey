@@ -1,6 +1,5 @@
 package at.htl.leosurvey.control;
 
-import at.htl.leosurvey.entities.AnswerOption;
 import at.htl.leosurvey.entities.ChosenOption;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
