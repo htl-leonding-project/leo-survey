@@ -15,16 +15,22 @@
     </ng-container>
     <ng-container matColumnDef="q_options">
       <th mat-header-cell *matHeaderCellDef> Option </th>
-      <td mat-cell *matCellDef="let option">
-        <div *ngIf="option.q_type == 'FREETEXT'; then dieses else jenes"></div>
-        <ng-template #dieses>
-          <mat-form-field appearance="legacy" class="fullwidth" style="margin-right: 2%;" (change)="pushFreetext(option)">
-            <input matInput placeholder="Type your Answer here" id="freetext" name="freetext" [(ngModel)]='freetextanswer'>
+      <td mat-cell *matCellDef="let fullquestion">
+        <div *ngIf="fullquestion.q_type == 'FREETEXT'; then freetext else checkbox"></div>
+        <ng-template #freetext>
+          <mat-form-field appearance="legacy" class="fullwidth" style="margin-right: 2%;" (change)="saveFreetext(fullquestion)">
+            <input
+              type="text"
+              matInput placeholder="Type your Answer here"
+              id="freetextanswer"
+              name="freetext"
+              [(ngModel)]="freetextanswer"
+            >
           </mat-form-field><br />
         </ng-template>
-        <ng-template #jenes>
-          <ng-container *ngFor="let o of option.q_options">
-            {{ o.ao_text }} <mat-checkbox (change)="pushOption(o)"></mat-checkbox><br />
+        <ng-template #checkbox>
+          <ng-container *ngFor="let o of fullquestion.q_options">
+            {{ o.ao_text }} <mat-checkbox (change)="saveOption(o)"></mat-checkbox><br />
           </ng-container>
       </ng-template>
     </td>
@@ -34,3 +40,4 @@
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
   </mat-table>
 </div>
+<button mat-raised-button color="secondary" class="mdc-button mdc-button--outlined" (click)="pushOptions()">Submit</button>

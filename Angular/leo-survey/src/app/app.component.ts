@@ -25,7 +25,9 @@ export class AppComponent {
   fq: FullQuestion;
   answeroptions: AnswerOption[];
 
-  freetextanswer: String = '';
+  freetextanswer: string = '';
+
+  backOptions: ChosenOption[] = [];
 
   constructor(private httpClient: HttpClient, public service: QuestionService) {
     this.dataSource = new MatTableDataSource<FullQuestion>();
@@ -52,21 +54,28 @@ export class AppComponent {
     console.log(this.service.getFullQuestions(), 'FullQuestions');
   }
 
-  pushOption(option: AnswerOption): void{
+  saveOption(option: AnswerOption): void{
     let back_answer: Answer = new Answer(option.ao_question.q_id, option.ao_text, option.ao_question);
     let back_chosenOption: ChosenOption = new ChosenOption(option.ao_question.q_id, option, back_answer, option.ao_question);
-    this.chooseOption(back_chosenOption).subscribe();
+    this.backOptions.push(back_chosenOption);
+    //this.chooseOption(back_chosenOption).subscribe();
   }
 
-  chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption>{
+  saveFreetext(option: FullQuestion): void{
+    let back_answer: Answer = new Answer(option.q_id, this.freetextanswer, option);
+    let back_chosenOption: ChosenOption = new ChosenOption(option.q_id, null, back_answer, option);
+    console.log(this.freetextanswer);
+    this.backOptions.push(back_chosenOption);
+    //this.chooseOption(back_chosenOption).subscribe();
+  }
+
+  chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption> {
     return this.httpClient.post<ChosenOption>('http://localhost:8080/leosurvey/chosenoptions/add', back_chosenOption);
   }
 
-  pushFreetext(option: FullQuestion): void{
-    let back_answer: Answer = new Answer(option.q_id, this.freetextanswer, option);
-    console.log(this.freetextanswer)
-    this.freetextanswer = "";
-    let back_chosenOption: ChosenOption = new ChosenOption(option.q_id, null, back_answer, option);
-    this.chooseOption(back_chosenOption).subscribe();
+  pushOptions(): void {
+    for(let x of this.backOptions){
+      this.chooseOption(x).subscribe();
+    }
   }
 }
