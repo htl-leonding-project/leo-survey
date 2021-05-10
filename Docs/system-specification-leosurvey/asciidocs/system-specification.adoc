@@ -108,10 +108,16 @@ Umfragen.
     ** Grafische Auswertung mit Diagrammen
     ** Textuelle Darstellung der Freitexte
 
-=== GANTT-Diagramm
+=== GANTT-Diagramme
+
+==== Erste Einschätzung am Projektbeginn
 
 [plantuml,gantt-protoype,png]
 
 image::gantt.png[]
 
+==== Einschätzung 10.05.2021
 
+[plantuml,new-gantt-0,png]
+
+image::newgantt-0.png[]

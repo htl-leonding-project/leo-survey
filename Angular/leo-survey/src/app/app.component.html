@@ -8,7 +8,7 @@
 </button>
 
 <div>
-  <mat-table style="float:left" [dataSource]="dataSource">
+  <table mat-table style="float:left" [dataSource]="dataSource">
     <ng-container matColumnDef="q_text">
       <th mat-header-cell *matHeaderCellDef> Questions </th>
       <td mat-cell *matCellDef="let question">{{ question.q_text }}</td>
@@ -38,6 +38,7 @@
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-  </mat-table>
+  </table>
 </div>
+<br/>
 <button mat-raised-button color="secondary" class="mdc-button mdc-button--outlined" (click)="pushOptions()">Submit</button>
