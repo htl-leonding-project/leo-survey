@@ -18,4 +18,8 @@ public class ChosenOptionRepository implements PanacheRepository<ChosenOption> {
     public List<ChosenOption> findAllOptions(){
         return listAll();
     }
+
+    public ChosenOption findById(Long id) {
+        return getEntityManager().find(ChosenOption.class, id);
+    }
 }

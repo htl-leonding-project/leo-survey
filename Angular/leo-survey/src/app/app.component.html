@@ -1,4 +1,17 @@
+<mat-form-field (change)="disabled=false">
+  <input
+    type="text"
+    matInput placeholder="Transactioncode"
+    id="text"
+    name="text"
+    [(ngModel)]="transactioncode"
+  >
+</mat-form-field>
+
+<br>
+
 <button
+  [disabled]="disabled"
   mat-raised-button
   color="secondary"
   class="mdc-button mdc-button--outlined"
@@ -6,6 +19,8 @@
   >
   Load Questions
 </button>
+
+<br>
 
 <div>
   <table mat-table style="float:left" [dataSource]="dataSource">
@@ -16,7 +31,7 @@
     <ng-container matColumnDef="q_options">
       <th mat-header-cell *matHeaderCellDef> Option </th>
       <td mat-cell *matCellDef="let fullquestion">
-        <div *ngIf="fullquestion.q_type == 'FREETEXT'; then freetext else checkbox"></div>
+        <div *ngIf="fullquestion.q_type == 'FREETEXT'; then freetext else singlechoice"></div>
         <ng-template #freetext>
           <mat-form-field appearance="legacy" class="fullwidth" style="margin-right: 2%;" (change)="saveFreetext(fullquestion)">
             <input
@@ -28,7 +43,7 @@
             >
           </mat-form-field><br />
         </ng-template>
-        <ng-template #checkbox>
+        <ng-template #singlechoice>
           <ng-container *ngFor="let o of fullquestion.q_options">
             {{ o.ao_text }} <mat-checkbox (change)="saveOption(o)"></mat-checkbox><br />
           </ng-container>
@@ -40,5 +55,7 @@
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
   </table>
 </div>
-<br/>
-<button mat-raised-button color="secondary" class="mdc-button mdc-button--outlined" (click)="pushOptions()">Submit</button>
+
+<br>
+
+<button mat-raised-button color="secondary" class="mdc-button mdc-button--outlined" (click)="saveToDatabase()">Submit</button>

@@ -29,11 +29,12 @@ public class ChosenOptionRepositoryTest {
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
         Answer a = new Answer("Yes", qn);
         AnswerOption a1 = new AnswerOption("Yes", 1, 1, qn);
-        chosenOptionRepository.save(new ChosenOption(a1, a, qn));
+        chosenOptionRepository.save(new ChosenOption(a1, a, qn, "abc"));
         assertThat(chosenOption).hasNumberOfRows(1);
         assertThat(chosenOption).row(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo(1)
-                .value().isEqualTo(1);
+                .value().isEqualTo(1)
+                .value().isEqualTo("abc");
     }
 }

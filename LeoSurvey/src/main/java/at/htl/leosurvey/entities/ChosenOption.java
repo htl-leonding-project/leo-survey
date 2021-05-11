@@ -14,13 +14,16 @@ public class ChosenOption {
     @ManyToOne(cascade = CascadeType.ALL)
     private Question co_q;
 
+    private String transaction_code;
+
     public ChosenOption() {
     }
 
-    public ChosenOption(AnswerOption co_ao, Answer co_a, Question co_q) {
+    public ChosenOption(AnswerOption co_ao, Answer co_a, Question co_q, String transaction_code) {
         this.co_ao = co_ao;
         this.co_a = co_a;
         this.co_q = co_q;
+        this.transaction_code = transaction_code;
     }
 
     public Long getCo_id() {
@@ -49,5 +52,13 @@ public class ChosenOption {
 
     public void setCo_q(Question co_q) {
         this.co_q = co_q;
+    }
+
+    public String getTransaction_code() {
+        return transaction_code;
+    }
+
+    public void setTransaction_code(String transaction_code) {
+        this.transaction_code = transaction_code;
     }
 }

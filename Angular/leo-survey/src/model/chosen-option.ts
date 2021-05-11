@@ -6,6 +6,7 @@ export class ChosenOption{
     public co_id: Number,
     public co_ao: AnswerOption,
     public co_a: Answer,
-    public co_q: Question
+    public co_q: Question,
+    public transaction_code: String
   ){}
 }

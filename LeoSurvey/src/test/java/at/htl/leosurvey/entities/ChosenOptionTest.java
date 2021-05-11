@@ -32,13 +32,14 @@ class ChosenOptionTest {
         em.persist(qn);
         em.persist(a);
         em.persist(a1);
-        em.persist(new ChosenOption(a1, a, qn));
+        em.persist(new ChosenOption(a1, a, qn, "abc"));
         tm.commit();
         Table chosenOption = new Table(DataSource.getDataSource(), "chosenoption");
         assertThat(chosenOption).hasNumberOfRows(1);
         assertThat(chosenOption).row(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo(1)
-                .value().isEqualTo(1);
+                .value().isEqualTo(1)
+                .value().isEqualTo("abc");
     }
 }
