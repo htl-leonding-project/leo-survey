@@ -29,11 +29,11 @@ public class InitBean {
     TeacherRepository teacherRepository;
 
     //Comment if you want to run the Tests
-    ///*
+
     void onStartUp(@Observes StartupEvent event){
         init();
     }
-    //*/
+
     public void init(){
         List<Question> questions = em.createQuery("select q from Question q").getResultList();
         TypedQuery<Question> query = em.createQuery("select q from Question q where q.q_id = ?1", Question.class);

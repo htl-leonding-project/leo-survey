@@ -12,10 +12,15 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FillOutSurveyComponent } from './fill-out-survey/fill-out-survey.component';
+import { AppRoutingModule } from './app-routing.module';
+import { GetResultsComponent } from './get-results/get-results.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FillOutSurveyComponent,
+    GetResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
