@@ -1,18 +1,11 @@
 package at.htl.leosurvey.boundary;
 
 //region imports
-import at.htl.leosurvey.control.AnswerOptionRepository;
-import at.htl.leosurvey.control.ChosenOptionRepository;
-import at.htl.leosurvey.control.QuestionRepository;
-import at.htl.leosurvey.entities.AnswerOption;
-import at.htl.leosurvey.entities.ChosenOption;
-import at.htl.leosurvey.entities.Question;
+import at.htl.leosurvey.control.*;
+import at.htl.leosurvey.entities.*;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,6 +25,12 @@ public class RESTTest {
 
     @Inject
     ChosenOptionRepository chosenOptionRepository;
+
+    @Inject
+    QuestionnaireRepository questionnaireRepository;
+
+    @Inject
+    SurveyRepository surveyRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -64,5 +63,29 @@ public class RESTTest {
     public Response findAllChosenOptions(){
         final List<ChosenOption> options = chosenOptionRepository.findAllOptions();
         return Response.ok(options).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/questionnaire")
+    public Response findAllQuestionnaires(){
+        final List<Questionnaire> questionnaires = questionnaireRepository.findAllQuestionnaires();
+        return Response.ok(questionnaires).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/survey")
+    public Response findAllSurveys(){
+        final List<Survey> surveys = surveyRepository.findAllSurveys();
+        return Response.ok(surveys).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/questionnaire/{id}")
+    public Response findQuestionnaireById(@PathParam("id") long id){
+        final Questionnaire questionnaire = questionnaireRepository.findById(id);
+        return Response.ok(questionnaire).build();
     }
 }

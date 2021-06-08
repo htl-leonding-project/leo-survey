@@ -15,7 +15,6 @@ import { QuestionService } from '../question.service';
   styleUrls: ['./fill-out-survey.component.scss']
 })
 export class FillOutSurveyComponent implements OnInit {
-  title = 'leo-survey';
 
   dataSource: MatTableDataSource<FullQuestion>;
   columnsToDisplay: string[] = ['q_text', 'q_options'];
@@ -59,7 +58,6 @@ export class FillOutSurveyComponent implements OnInit {
     let back_answer: Answer = new Answer(option.ao_question.q_id, option.ao_text, option.ao_question);
     let back_chosenOption: ChosenOption = new ChosenOption(option.ao_question.q_id, option, back_answer, option.ao_question, this.transactioncode);
     this.backOptions.push(back_chosenOption);
-    //this.chooseOption(back_chosenOption).subscribe();
   }
 
   saveFreetext(option: FullQuestion): void{
@@ -67,7 +65,6 @@ export class FillOutSurveyComponent implements OnInit {
     let back_chosenOption: ChosenOption = new ChosenOption(option.q_id, null, back_answer, option, this.transactioncode);
     console.log(this.freetextanswer);
     this.backOptions.push(back_chosenOption);
-    //this.chooseOption(back_chosenOption).subscribe();
   }
 
   chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption> {

@@ -1,1 +1,13 @@
-<p>get-results works!</p>
+<div>
+  <mat-form-field>
+    <mat-select [(formControl)]="control" required>
+      <mat-option *ngFor="let survey of surveyList" [value]="survey">
+        {{ survey.s_id }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button (click)="getQuestions()">Choose</button>
+</div>
+
+

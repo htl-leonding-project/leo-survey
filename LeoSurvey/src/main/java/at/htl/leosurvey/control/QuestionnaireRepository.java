@@ -1,10 +1,12 @@
 package at.htl.leosurvey.control;
 
+import at.htl.leosurvey.entities.Question;
 import at.htl.leosurvey.entities.Questionnaire;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @ApplicationScoped
 public class QuestionnaireRepository implements PanacheRepository<Questionnaire> {
@@ -21,5 +23,9 @@ public class QuestionnaireRepository implements PanacheRepository<Questionnaire>
 
     public Questionnaire findById(long id){
         return find("id",id).singleResult();
+    }
+
+    public List<Questionnaire> findAllQuestionnaires(){
+        return listAll();
     }
 }

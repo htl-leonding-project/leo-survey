@@ -50,3 +50,8 @@ Content-Type:application/json
     }
   }
 }
+
+### Get all Questionnaires
+
+GET http://localhost:8080/leosurvey/questionnaire
+Accept: application/json
