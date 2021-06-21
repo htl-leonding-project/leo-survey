@@ -87,4 +87,20 @@ public class Endpoint {
         final Questionnaire questionnaire = questionnaireRepository.findById(id);
         return Response.ok(questionnaire).build();
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/questions/{id}")
+    public Response findQuestionsByQuestionnaire(@PathParam("id") long id){
+        final List<Question> questions = questionRepository.findQuestionsByQuestionnaire(id);
+        return Response.ok(questions).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/chosenoptions/{id}")
+    public Response findChosenOptionsByQuestionnaire(@PathParam("id") long id){
+        final List<ChosenOption> chosenOptions = chosenOptionRepository.findChosenOptionsByQuestionnaire(id);
+        return Response.ok(chosenOptions).build();
+    }
 }

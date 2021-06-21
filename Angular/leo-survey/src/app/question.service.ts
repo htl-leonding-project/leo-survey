@@ -2,6 +2,7 @@ import { FullQuestion } from './../model/full-question';
 import { AnswerOption } from './../model/answer-option';
 import { Question } from './../model/question';
 import { Injectable } from '@angular/core';
+import { HowOften } from 'src/model/how-often';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,12 @@ export class QuestionService {
   private questions: Question[];
   private options: AnswerOption[];
   private fullquestions: FullQuestion[];
+  private howoften: HowOften[];
   constructor() {
     this.questions = [];
     this.options = [];
     this.fullquestions = [];
+    this.howoften = [];
   }
   setQuestions(data: Question[]): void{
     this.questions = data;
@@ -35,5 +38,11 @@ export class QuestionService {
   }
   setOneQuestion(data: FullQuestion): void{
     this.fullquestions.push(data);
+  }
+  setOneHowoften(data: HowOften): void{
+    this.howoften.push(data);
+  }
+  getHowOften(): HowOften[]{
+    return this.howoften;
   }
 }
