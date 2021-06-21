@@ -12,7 +12,7 @@ public class Question {
     //private Blob q_image;
     private int q_sequenceNumber; //???
     private String q_type;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Questionnaire q_questionnaire;
 
     public Question() {
@@ -24,6 +24,10 @@ public class Question {
         this.q_sequenceNumber = q_sequenceNumber;
         this.q_type = q_type;
         this.q_questionnaire = q_questionnaire;
+    }
+
+    public void setQ_id(Long q_id){
+        this.q_id = q_id;
     }
 
     public Long getQ_id() {

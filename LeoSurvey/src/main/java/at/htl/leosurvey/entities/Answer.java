@@ -8,7 +8,7 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long a_id;
     private String a_answer_text;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Question q_question;
 
     public Answer() {

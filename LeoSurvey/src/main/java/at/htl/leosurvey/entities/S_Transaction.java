@@ -10,7 +10,7 @@ public class S_Transaction {
     private int tr_id;
     private String t_transactioncode;
     private boolean t_is_used;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Survey t_survey;
 
     public S_Transaction() {

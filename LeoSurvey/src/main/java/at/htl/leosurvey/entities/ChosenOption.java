@@ -7,11 +7,11 @@ public class ChosenOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long co_id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private AnswerOption co_ao;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Answer co_a;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Question co_q;
 
     private String transaction_code;

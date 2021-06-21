@@ -8,7 +8,7 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int t_id;
     private String t_name;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Survey t_survey;
 
     public Teacher() {

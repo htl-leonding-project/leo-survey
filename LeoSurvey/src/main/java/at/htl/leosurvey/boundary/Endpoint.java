@@ -16,7 +16,7 @@ import java.util.List;
 //endregion
 
 @Path("leosurvey")
-public class RESTTest {
+public class Endpoint {
     @Inject
     QuestionRepository questionRepository;
 
@@ -51,7 +51,6 @@ public class RESTTest {
     @POST
     @Path("/chosenoptions/add")
     public Response addChosenOption(ChosenOption chosenOption, @Context UriInfo info){
-
         final ChosenOption savedChosenOption = chosenOptionRepository.save(chosenOption);
         URI uri = info.getAbsolutePathBuilder().path("/leosurvey/chosenoptions/add/" + savedChosenOption.getCo_id()).build();
         return Response.created(uri).build();

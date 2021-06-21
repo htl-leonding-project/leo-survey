@@ -10,7 +10,7 @@ public class AnswerOption {
     private String ao_text;
     private int ao_value; //???
     private int ao_sequenceNumber; //???
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Question ao_question;
 
 

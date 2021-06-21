@@ -57,6 +57,7 @@ export class FillOutSurveyComponent implements OnInit {
   saveOption(option: AnswerOption): void{
     let back_answer: Answer = new Answer(option.ao_question.q_id, option.ao_text, option.ao_question);
     let back_chosenOption: ChosenOption = new ChosenOption(option.ao_question.q_id, option, back_answer, option.ao_question, this.transactioncode);
+    console.log(back_chosenOption)
     this.backOptions.push(back_chosenOption);
   }
 

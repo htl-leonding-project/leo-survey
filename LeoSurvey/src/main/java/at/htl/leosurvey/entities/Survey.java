@@ -9,7 +9,7 @@ public class Survey {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int s_id;
     private LocalDate s_date;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Questionnaire s_questionnaire;
 
     public Survey() {
