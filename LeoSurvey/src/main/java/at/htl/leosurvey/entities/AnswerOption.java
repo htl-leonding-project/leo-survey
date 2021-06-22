@@ -24,6 +24,10 @@ public class AnswerOption {
         this.ao_question = ao_question;
     }
 
+    public void setAo_id(Long ao_id) {
+        this.ao_id = ao_id;
+    }
+
     public Long getAo_id() {
         return ao_id;
     }

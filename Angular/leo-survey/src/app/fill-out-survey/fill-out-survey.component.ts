@@ -43,9 +43,13 @@ export class FillOutSurveyComponent implements OnInit {
     for(let q of this.service.getQuestions()){
       this.answeroptions = [];
       for(let o of this.service.getOptions()){
-        if(q.q_id === o.ao_question.q_id){
-          this.answeroptions.push(o);
+        try{
+           if(q.q_id == o.ao_question.q_id){
+              this.answeroptions.push(o);
+            }
+        }catch(e){
         }
+
       }
       this.fq = new FullQuestion(q.q_id, q.q_text, q.q_sequenceNumber, q.q_type, q.q_questionnaire, this.answeroptions);
       this.service.setOneQuestion(this.fq);

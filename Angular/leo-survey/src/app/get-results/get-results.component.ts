@@ -24,13 +24,13 @@ export class GetResultsComponent implements OnInit {
   options: AnswerOption[];
   surveyList: Survey[];
 
-  count: number;
+  count: number = 0;
   ho: HowOften;
 
   control = new FormControl('', Validators.required);
 
   dataSource: MatTableDataSource<HowOften>;
-  columnsToDisplay: string[] = ['q_text', 'q_options', 'how_often'];
+  columnsToDisplay: string[] = ['q_text', 'q_options'];
 
   constructor(private httpClient: HttpClient, public service: QuestionService) {
     this.questionnaires = [];
@@ -58,28 +58,35 @@ export class GetResultsComponent implements OnInit {
     this.chosenOptions = await this.httpClient.get<ChosenOption[]>('http://localhost:8080/leosurvey/chosenoptions/' + survey.s_questionnaire.qn_id).toPromise();
     this.options = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
 
-
-    console.log(this.questionnaires);
-    console.log(this.questions);
-    console.log(this.chosenOptions);
+    console.log(this.chosenOptions)
 
     for(let q of this.questions){
       this.answerOptions = [];
       for(let o of this.options){
-        if(o.ao_question.q_id === q.q_id){
-          this.answerOptions.push(o)
+        try{
+          if(o.ao_question.q_id === q.q_id){
+            this.answerOptions.push(o)
+          }
+        }catch(e){}
+      }
+
+      this.count = 0;
+      for(let i = 0; i <= this.chosenOptions.length-1; i++){
+        let x = this.chosenOptions[i].co_ao.ao_id;
+        let y = q.q_id
+        for(let j = 0; j <= this.chosenOptions.length-1; j++){
+          if(this.chosenOptions[j].co_ao.ao_id == x && this.chosenOptions[j].co_q.q_id == y){
+            this.count++;
+            try{
+              this.answerOptions[this.chosenOptions[i].co_ao.ao_value].ao_how_often = this.count;
+            }catch(e){}
+          }
         }
       }
-      for(let co of this.chosenOptions){
-        if(co.co_q.q_id === q.q_id){
-          this.count++;
-        }
-      }
-      this.ho = new HowOften(q.q_text, this.answerOptions, this.count)
+      this.ho = new HowOften(q.q_text, this.answerOptions)
       this.service.setOneHowoften(this.ho);
     }
     console.log(this.service.getHowOften())
     this.dataSource.data=[...this.service.getHowOften()]
   }
-
 }

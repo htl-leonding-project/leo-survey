@@ -11,6 +11,7 @@ export class QuestionService {
   private questions: Question[];
   private options: AnswerOption[];
   private fullquestions: FullQuestion[];
+
   private howoften: HowOften[];
   constructor() {
     this.questions = [];
@@ -39,6 +40,7 @@ export class QuestionService {
   setOneQuestion(data: FullQuestion): void{
     this.fullquestions.push(data);
   }
+
   setOneHowoften(data: HowOften): void{
     this.howoften.push(data);
   }
