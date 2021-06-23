@@ -24,7 +24,6 @@ export class GetResultsComponent implements OnInit {
   options: AnswerOption[];
   surveyList: Survey[];
 
-  count: number = 0;
   ho: HowOften;
 
   control = new FormControl('', Validators.required);
@@ -70,19 +69,6 @@ export class GetResultsComponent implements OnInit {
         }catch(e){}
       }
 
-      this.count = 0;
-      for(let i = 0; i <= this.chosenOptions.length-1; i++){
-        let x = this.chosenOptions[i].co_ao.ao_id;
-        let y = q.q_id
-        for(let j = 0; j <= this.chosenOptions.length-1; j++){
-          if(this.chosenOptions[j].co_ao.ao_id == x && this.chosenOptions[j].co_q.q_id == y){
-            this.count++;
-            try{
-              this.answerOptions[this.chosenOptions[i].co_ao.ao_value].ao_how_often = this.count;
-            }catch(e){}
-          }
-        }
-      }
       this.ho = new HowOften(q.q_text, this.answerOptions)
       this.service.setOneHowoften(this.ho);
     }

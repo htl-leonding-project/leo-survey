@@ -12,16 +12,18 @@ public class AnswerOption {
     private int ao_sequenceNumber; //???
     @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Question ao_question;
+    private int ao_how_often;
 
 
     public AnswerOption() {
     }
 
-    public AnswerOption(String ao_text, int ao_value, int ao_sequenceNumber, Question ao_question) {
+    public AnswerOption(String ao_text, int ao_value, int ao_sequenceNumber, Question ao_question, int ao_how_often) {
         this.ao_text = ao_text;
         this.ao_value = ao_value;
         this.ao_sequenceNumber = ao_sequenceNumber;
         this.ao_question = ao_question;
+        this.ao_how_often = ao_how_often;
     }
 
     public void setAo_id(Long ao_id) {
@@ -62,5 +64,13 @@ public class AnswerOption {
 
     public void setAo_question(Question ao_question) {
         this.ao_question = ao_question;
+    }
+
+    public int getAo_how_often() {
+        return ao_how_often;
+    }
+
+    public void setAo_how_often(int ao_how_often) {
+        this.ao_how_often = ao_how_often;
     }
 }

@@ -244,25 +244,25 @@ public class InitBean {
         for(int i = 1; i <= 9; i++){
             Question question = query.setParameter(1, Long.valueOf(i)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Eigenschaft trifft auf meinen Lehrer" +
-                    " völlig zu", 1, i, question);
+                    " völlig zu", 1, i, question, 0);
             answerOptionRepository.save(a);
         }
         for(int i = 1; i <= 9; i++){
             Question question = query.setParameter(1, Long.valueOf(i)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Eigenschaft trifft auf meinen Lehrer" +
-                    " eher zu", 2, i, question);
+                    " eher zu", 2, i, question, 0);
             answerOptionRepository.save(a);
         }
         for(int i = 1; i <= 9; i++){
             Question question = query.setParameter(1, Long.valueOf(i)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Eigenschaft trifft auf meinen Lehrer" +
-                    " eher nicht zu", 3, i, question);
+                    " eher nicht zu", 3, i, question, 0);
             answerOptionRepository.save(a);
         }
         for(int i = 1; i <= 9; i++){
             Question question = query.setParameter(1, Long.valueOf(i)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Eigenschaft trifft auf meinen Lehrer" +
-                    " überhaupt nicht zu", 4, i, question);
+                    " überhaupt nicht zu", 4, i, question, 0);
             answerOptionRepository.save(a);
         }
 
@@ -270,35 +270,35 @@ public class InitBean {
         for(int i = 1; i <= 30; i++){
             Question question = query.setParameter(1, Long.valueOf(i + 9)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Beschreibung ist völlig richtig",
-                    1, i, question);
+                    1, i, question, 0);
             answerOptionRepository.save(a);
         }
         for(int i = 1; i <= 30; i++){
             Question question = query.setParameter(1, Long.valueOf(i + 9)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Beschreibung ist eher richtig",
-                    2, i, question);
+                    2, i, question, 0);
             answerOptionRepository.save(a);
         }
         for(int i = 1; i <= 30; i++){
             Question question = query.setParameter(1, Long.valueOf(i + 9)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Beschreibung ist eher falsch",
-                    3, i, question);
+                    3, i, question, 0);
             answerOptionRepository.save(a);
         }
         for(int i = 1; i <= 30; i++){
             Question question = query.setParameter(1, Long.valueOf(i + 9)).getSingleResult();
             AnswerOption a = new AnswerOption("Diese Beschreibung ist völlig falsch",
-                    4, i, question);
+                    4, i, question, 0);
             answerOptionRepository.save(a);
         }
 
         //Answer Options for Question 31
         Question question = query.setParameter(1, Long.valueOf(40)).getSingleResult();
-        AnswerOption a1 = new AnswerOption("sehr zufrieden", 1, 1, question);
-        AnswerOption a2 = new AnswerOption("eher zufrieden", 2, 2, question);
-        AnswerOption a3 = new AnswerOption("mittelmäßig zufrieden", 3, 3, question);
-        AnswerOption a4 = new AnswerOption("eher unzufrieden", 4, 4, question);
-        AnswerOption a5 = new AnswerOption("sehr unzufrieden", 5, 5, question);
+        AnswerOption a1 = new AnswerOption("sehr zufrieden", 1, 1, question, 0);
+        AnswerOption a2 = new AnswerOption("eher zufrieden", 2, 2, question, 0);
+        AnswerOption a3 = new AnswerOption("mittelmäßig zufrieden", 3, 3, question, 0);
+        AnswerOption a4 = new AnswerOption("eher unzufrieden", 4, 4, question, 0);
+        AnswerOption a5 = new AnswerOption("sehr unzufrieden", 5, 5, question, 0);
         answerOptionRepository.save(a1);
         answerOptionRepository.save(a2);
         answerOptionRepository.save(a3);
