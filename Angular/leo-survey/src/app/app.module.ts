@@ -2,8 +2,9 @@ import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from "@angular/common";
+import {MatRadioModule} from '@angular/material/radio';
 
 
 import { AppComponent } from './app.component';
@@ -36,7 +37,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

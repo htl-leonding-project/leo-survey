@@ -44,8 +44,15 @@
           </mat-form-field><br />
         </ng-template>
         <ng-template #singlechoice>
-          <ng-container *ngFor="let o of fullquestion.q_options">
-            {{ o.ao_text }} <mat-checkbox (change)="saveOption(o)"></mat-checkbox><br />
+          <ng-container>
+           + <mat-radio-group aria-label="Select an Option">
+              <mat-radio-button value="1" (change)="saveOption(fullquestion.q_options[0])"></mat-radio-button>
+              <mat-radio-button value="2" (change)="saveOption(fullquestion.q_options[1])"></mat-radio-button>
+              <mat-radio-button value="3" (change)="saveOption(fullquestion.q_options[2])"></mat-radio-button>
+              <mat-radio-button value="4" (change)="saveOption(fullquestion.q_options[3])"></mat-radio-button>
+            </mat-radio-group> -<br/>
+
+            <!--{{ o.ao_text }} <mat-checkbox (change)="saveOption(o)"></mat-checkbox><br />-->
           </ng-container>
       </ng-template>
     </td>
