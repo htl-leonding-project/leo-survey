@@ -28,16 +28,16 @@ class AnswerOptionTest {
         tm.begin();
         em.persist(q);
         em.persist(qn);
-        em.persist(new AnswerOption("Yes", 1, 1, qn));
-        em.persist(new AnswerOption("no", 2, 2, qn));
+        em.persist(new AnswerOption("Yes", 1, 1, qn, 1));
+        em.persist(new AnswerOption("no", 2, 2, qn, 1));
         tm.commit();
         Table ao = new Table(DataSource.getDataSource(), "answeroption");
         assertThat(ao).hasNumberOfRows(2);
         assertThat(ao).row(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo(1)
-                .value().isEqualTo("Yes")
                 .value().isEqualTo(1)
+                .value().isEqualTo("Yes")
                 .value().isEqualTo(1);
     }
 }

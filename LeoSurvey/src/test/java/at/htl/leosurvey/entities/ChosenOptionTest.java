@@ -26,7 +26,7 @@ class ChosenOptionTest {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
         Answer a = new Answer("Yes", qn);
-        AnswerOption a1 = new AnswerOption("Yes", 1, 1, qn);
+        AnswerOption a1 = new AnswerOption("Yes", 1, 1, qn, 0);
         tm.begin();
         em.persist(q);
         em.persist(qn);
@@ -38,8 +38,8 @@ class ChosenOptionTest {
         assertThat(chosenOption).hasNumberOfRows(1);
         assertThat(chosenOption).row(0)
                 .value().isEqualTo(1)
+                .value().isEqualTo("abc")
                 .value().isEqualTo(1)
-                .value().isEqualTo(1)
-                .value().isEqualTo("abc");
+                .value().isEqualTo(1);
     }
 }

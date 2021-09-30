@@ -16,8 +16,8 @@ public class S_Transaction {
     public S_Transaction() {
     }
 
-    public S_Transaction(boolean t_is_used, Survey t_survey) {
-        this.t_transactioncode = generateTransactionCode();
+    public S_Transaction(boolean t_is_used, Survey t_survey, String t_transactioncode) {
+        this.t_transactioncode = t_transactioncode;
         this.t_is_used = t_is_used;
         this.t_survey = t_survey;
     }

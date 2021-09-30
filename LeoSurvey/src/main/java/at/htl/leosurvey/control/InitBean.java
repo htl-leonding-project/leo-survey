@@ -31,7 +31,7 @@ public class InitBean {
     //Comment if you want to run the Tests
 
     void onStartUp(@Observes StartupEvent event){
-        init();
+        //init();
     }
 
     public void init(){
@@ -49,11 +49,11 @@ public class InitBean {
 
         //TransactionCodes
         S_Transaction s_t1 = new S_Transaction(false,
-                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
+                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult(), "abc");
         S_Transaction s_t2 = new S_Transaction(false,
-                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
+                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult(), "abc");
         S_Transaction s_t3 = new S_Transaction(false,
-                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
+                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult(), "abc");
         s_transactionRepository.save(s_t1);
         s_transactionRepository.save(s_t2);
         s_transactionRepository.save(s_t3);
@@ -198,13 +198,13 @@ public class InitBean {
         Question q31 = new Question("Wie zufrieden bist du mit deinem LEHRER insgesamt?", 40,
                 QuestionType.SINGLECHOICE.name(),
                 (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
-        Question q32 = new Question("An diesem Lehrer gefällt mir,", 41,
+        /*Question q32 = new Question("An diesem Lehrer gefällt mir,", 41,
                 QuestionType.FREETEXT.name(),
                 (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
         Question q33 = new Question("An diesem Lehrer stört mich, ", 42,
                 QuestionType.FREETEXT.name(),
                 (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
-
+        */
         questionRepository.save(q1);
         questionRepository.save(q2);
         questionRepository.save(q3);
@@ -236,8 +236,8 @@ public class InitBean {
         questionRepository.save(q29);
         questionRepository.save(q30);
         questionRepository.save(q31);
-        questionRepository.save(q32);
-        questionRepository.save(q33);
+        //questionRepository.save(q32);
+        //questionRepository.save(q33);
 
 
         //Answer Options for Questions a - i

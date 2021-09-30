@@ -27,6 +27,7 @@ survey with the people who want to participate in the survey.
 * <<project-proposal.adoc#, Project Proposal>> (Projektantrag)
 * <<project-oder.adoc#, Project Order>> (Projektauftrag)
 * <<system-specification.adoc#, System Specification>> (Pflichtenheft)
+* <<leosurvey-presentation-5grade.adoc#, Presentation>>
 
 == External Project Repository
 

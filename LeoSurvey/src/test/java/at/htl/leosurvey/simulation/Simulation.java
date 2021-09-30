@@ -56,11 +56,11 @@ public class Simulation {
         surveyRepository.save(s);
 
         S_Transaction s_t1 = new S_Transaction(false,
-                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
+                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult(), "abc");
         S_Transaction s_t2 = new S_Transaction(false,
-                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
+                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult(), "abc");
         S_Transaction s_t3 = new S_Transaction(false,
-                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult());
+                (Survey) em.createQuery("select s from Survey s where s.s_id = 1").getSingleResult(), "abc");
         s_transactionRepository.save(s_t1);
         s_transactionRepository.save(s_t2);
         s_transactionRepository.save(s_t3);
@@ -80,17 +80,17 @@ public class Simulation {
         questionRepository.save(q3);
 
         AnswerOption a1q1 = new AnswerOption("Yes", 1, 1,
-                (Question) em.createQuery("select q from Question q where q.q_id = 1").getSingleResult());
+                (Question) em.createQuery("select q from Question q where q.q_id = 1").getSingleResult(), 0);
         AnswerOption a1q3 = new AnswerOption("Answer 1", 3, 3,
-                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult());
+                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult(), 0);
         AnswerOption a2q1 = new AnswerOption("No", 2, 2,
-                (Question) em.createQuery("select q from Question q where q.q_id = 1").getSingleResult());
+                (Question) em.createQuery("select q from Question q where q.q_id = 1").getSingleResult(), 0);
         AnswerOption a2q3 = new AnswerOption("Answer 2", 4, 4,
-                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult());
+                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult(), 0);
         AnswerOption a3q3 = new AnswerOption("Answer 3", 5, 5,
-                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult());
+                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult(), 0);
         AnswerOption a4q3 = new AnswerOption("Answer 4", 6, 6,
-                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult());
+                (Question) em.createQuery("select q from Question q where q.q_id = 3").getSingleResult(), 0);
         answerOptionRepository.save(a1q1);
         answerOptionRepository.save(a2q1);
         answerOptionRepository.save(a1q3);

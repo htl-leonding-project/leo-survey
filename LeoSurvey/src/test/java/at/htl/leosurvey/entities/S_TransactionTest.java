@@ -28,7 +28,7 @@ class S_TransactionTest {
         tm.begin();
         em.persist(q);
         em.persist(survey);
-        em.persist(new S_Transaction(false, survey));
+        em.persist(new S_Transaction(false, survey, "abc"));
         tm.commit();
         Table transactions = new Table(DataSource.getDataSource(), "s_transaction");
         assertThat(transactions).row(0)

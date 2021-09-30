@@ -31,15 +31,15 @@ public class AnswerOptionRepositoryTest {
         Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
 
-        answerOptionRepository.save(new AnswerOption("Yes", 1, 1, qn));
-        answerOptionRepository.save(new AnswerOption("no", 2, 2, qn));
+        answerOptionRepository.save(new AnswerOption("Yes", 1, 1, qn, 0));
+        answerOptionRepository.save(new AnswerOption("no", 2, 2, qn, 0));
 
         assertThat(ao).hasNumberOfRows(2);
         assertThat(ao).row(0)
                 .value().isEqualTo(1)
+                .value().isEqualTo(0)
                 .value().isEqualTo(1)
                 .value().isEqualTo("Yes")
-                .value().isEqualTo(1)
                 .value().isEqualTo(1);
     }
 }

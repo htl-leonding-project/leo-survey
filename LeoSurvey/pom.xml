@@ -7,17 +7,16 @@
     <artifactId>leo-survey</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <surefire-plugin.version>2.22.1</surefire-plugin.version>
-        <maven.compiler.target>11</maven.compiler.target>
-        <quarkus.platform.version>1.10.3.Final</quarkus.platform.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.parameters>true</maven.compiler.parameters>
-        <quarkus-plugin.version>1.10.3.Final</quarkus-plugin.version>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
-        <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+        <quarkus.platform.version>2.2.3.Final</quarkus.platform.version>
+        <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -83,10 +82,10 @@
             <version>3.17.2</version>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.quarkus</groupId>-->
-<!--            <artifactId>quarkus-jdbc-postgresql</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.quarkus</groupId>-->
+        <!--            <artifactId>quarkus-jdbc-postgresql</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-derby</artifactId>
@@ -109,9 +108,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.quarkus</groupId>
+                <groupId>${quarkus.platform.group-id}</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
-                <version>${quarkus-plugin.version}</version>
+                <version>${quarkus.platform.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -126,6 +125,9 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler-plugin.version}</version>
+                <configuration>
+                    <parameters>${maven.compiler.parameters}</parameters>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
