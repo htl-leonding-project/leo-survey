@@ -31,7 +31,7 @@ public class InitBean {
     //Comment if you want to run the Tests
 
     void onStartUp(@Observes StartupEvent event){
-        //init();
+        init();
     }
 
     public void init(){
