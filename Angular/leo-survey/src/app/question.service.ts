@@ -34,8 +34,14 @@ export class QuestionService {
   setFullQuestions(data: FullQuestion[]): void{
     this.fullquestions = data;
   }
-  getFullQuestions(): FullQuestion[]{
-    return this.fullquestions;
+  getFullQuestions1(): FullQuestion[]{
+    return this.fullquestions.slice(0, 9);
+  }
+  getFullQuestions2(): FullQuestion[]{
+    return this.fullquestions.slice(9, 39);
+  }
+  getFullQuestions3(): FullQuestion[]{
+    return this.fullquestions.slice(39);
   }
   setOneQuestion(data: FullQuestion): void{
     this.fullquestions.push(data);

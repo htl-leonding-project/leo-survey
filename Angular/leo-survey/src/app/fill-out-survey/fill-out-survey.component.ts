@@ -16,8 +16,10 @@ import { QuestionService } from '../question.service';
 })
 export class FillOutSurveyComponent implements OnInit {
 
-  dataSource: MatTableDataSource<FullQuestion>;
-  columnsToDisplay: string[] = ['q_text', 'q_options'];
+  dataSource1: MatTableDataSource<FullQuestion>;
+  dataSource2: MatTableDataSource<FullQuestion>;
+  dataSource3: MatTableDataSource<FullQuestion>;
+  columnsToDisplay: string[] = ['q_options', 'q_text'];
   fq: FullQuestion;
   answeroptions: AnswerOption[];
   freetextanswer: string = '';
@@ -26,7 +28,9 @@ export class FillOutSurveyComponent implements OnInit {
   disabled: Boolean = true;
 
   constructor(private httpClient: HttpClient, public service: QuestionService) {
-    this.dataSource = new MatTableDataSource<FullQuestion>();
+    this.dataSource1 = new MatTableDataSource<FullQuestion>();
+    this.dataSource2 = new MatTableDataSource<FullQuestion>();
+    this.dataSource3 = new MatTableDataSource<FullQuestion>();
   }
 
   ngOnInit(): void {
@@ -54,8 +58,10 @@ export class FillOutSurveyComponent implements OnInit {
       this.fq = new FullQuestion(q.q_id, q.q_text, q.q_sequenceNumber, q.q_type, q.q_questionnaire, this.answeroptions);
       this.service.setOneQuestion(this.fq);
     }
-    this.dataSource.data=[...this.service.getFullQuestions()];
-    console.log(this.service.getFullQuestions(), 'FullQuestions');
+    this.dataSource1.data=[...this.service.getFullQuestions1()];
+    this.dataSource2.data=[...this.service.getFullQuestions2()];
+    this.dataSource3.data=[...this.service.getFullQuestions3()];
+    console.log(this.service.getFullQuestions1(), 'FullQuestions');
   }
 
   saveOption(option: AnswerOption): void{
