@@ -19,7 +19,9 @@ export class FillOutSurveyComponent implements OnInit {
   dataSource1: MatTableDataSource<FullQuestion>;
   dataSource2: MatTableDataSource<FullQuestion>;
   dataSource3: MatTableDataSource<FullQuestion>;
+  dataSource4: FullQuestion[];
   columnsToDisplay: string[] = ['q_options', 'q_text'];
+  columnsToDisplay2: string[] = ['q_text', 'q_options'];
   fq: FullQuestion;
   answeroptions: AnswerOption[];
   freetextanswer: string = '';
@@ -61,7 +63,7 @@ export class FillOutSurveyComponent implements OnInit {
     this.dataSource1.data=[...this.service.getFullQuestions1()];
     this.dataSource2.data=[...this.service.getFullQuestions2()];
     this.dataSource3.data=[...this.service.getFullQuestions3()];
-    console.log(this.service.getFullQuestions1(), 'FullQuestions');
+    this.dataSource4 = this.service.getFullQuestions4();
   }
 
   saveOption(option: AnswerOption): void{

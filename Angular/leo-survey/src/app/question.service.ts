@@ -41,7 +41,10 @@ export class QuestionService {
     return this.fullquestions.slice(9, 39);
   }
   getFullQuestions3(): FullQuestion[]{
-    return this.fullquestions.slice(39);
+    return this.fullquestions.slice(39, 40);
+  }
+  getFullQuestions4(): FullQuestion[]{
+    return this.fullquestions.slice(40);
   }
   setOneQuestion(data: FullQuestion): void{
     this.fullquestions.push(data);
