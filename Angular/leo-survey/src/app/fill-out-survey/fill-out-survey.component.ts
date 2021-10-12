@@ -24,7 +24,8 @@ export class FillOutSurveyComponent implements OnInit {
   columnsToDisplay2: string[] = ['q_text', 'q_options'];
   fq: FullQuestion;
   answeroptions: AnswerOption[];
-  freetextanswer: string = '';
+  freetextanswer1: string = '';
+  freetextanswer2: string = '';
   backOptions: ChosenOption[] = [];
   transactioncode: String = '';
   disabled: Boolean = true;
@@ -35,11 +36,7 @@ export class FillOutSurveyComponent implements OnInit {
     this.dataSource3 = new MatTableDataSource<FullQuestion>();
   }
 
-  ngOnInit(): void {
-
-  }
-
-  async load(): Promise<void> {
+  async ngOnInit(): Promise<void> {
     const questions : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
     const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
 
@@ -60,10 +57,16 @@ export class FillOutSurveyComponent implements OnInit {
       this.fq = new FullQuestion(q.q_id, q.q_text, q.q_sequenceNumber, q.q_type, q.q_questionnaire, this.answeroptions);
       this.service.setOneQuestion(this.fq);
     }
+
+    this.dataSource4 = this.service.getFullQuestions4();
+  }
+
+  async load(): Promise<void> {
+
     this.dataSource1.data=[...this.service.getFullQuestions1()];
     this.dataSource2.data=[...this.service.getFullQuestions2()];
     this.dataSource3.data=[...this.service.getFullQuestions3()];
-    this.dataSource4 = this.service.getFullQuestions4();
+
   }
 
   saveOption(option: AnswerOption): void{
@@ -74,10 +77,17 @@ export class FillOutSurveyComponent implements OnInit {
     this.backOptions.push(back_chosenOption);
   }
 
-  saveFreetext(option: FullQuestion): void{
-    let back_answer: Answer = new Answer(option.q_id, this.freetextanswer, option);
-    let back_chosenOption: ChosenOption = new ChosenOption(option.q_id, null, back_answer, option, this.transactioncode);
-    console.log(this.freetextanswer);
+  saveFreetextOne(): void{
+    let back_answer: Answer = new Answer(41, this.freetextanswer1, null);
+    let back_chosenOption: ChosenOption = new ChosenOption(41, null, back_answer, null, this.transactioncode);
+    console.log(this.freetextanswer1);
+    this.backOptions.push(back_chosenOption);
+  }
+
+  saveFreetextTwo(): void{
+    let back_answer: Answer = new Answer(42, this.freetextanswer2, null);
+    let back_chosenOption: ChosenOption = new ChosenOption(42, null, back_answer, null, this.transactioncode);
+    console.log(this.freetextanswer2);
     this.backOptions.push(back_chosenOption);
   }
 

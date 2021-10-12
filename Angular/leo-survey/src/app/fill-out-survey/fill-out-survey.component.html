@@ -29,7 +29,7 @@
 
 <br>
 
-<div id="ds1">
+<div id="ds1" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
   <table mat-table style="float:left" [dataSource]="dataSource1">
     <ng-container matColumnDef="q_text">
       <th mat-header-cell *matHeaderCellDef> Questions </th>
@@ -58,7 +58,7 @@
 
 <br>
 
-<div id="ds2">
+<div id="ds2" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
   <table mat-table style="float:left" [dataSource]="dataSource2">
     <ng-container matColumnDef="q_text">
       <th mat-header-cell *matHeaderCellDef> Questions </th>
@@ -86,7 +86,7 @@
 
 <br>
 
-<div id="ds3">
+<div id="ds3" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
   <table mat-table style="float:left" [dataSource]="dataSource3">
     <ng-container matColumnDef="q_text">
       <th mat-header-cell *matHeaderCellDef></th>
@@ -114,13 +114,24 @@
   </table>
 </div>
 
-<!--<div id="ds4">
-  <mat-form-field appearance="fill">
-    <mat-label>{{ dataSource4[0].q_text }}</mat-label>
-    <textarea matInput></textarea>
+
+<div id="ds4" style="font-size: 12px" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
+  <mat-form-field appearance="fill" class="fullwidth" style="margin-right: 2%;" (change)="saveFreetextOne()">
+    <input
+      type="text"
+      matInput placeholder={{dataSource4[0].q_text}}
+      id="text"
+      name="text"
+      [(ngModel)]="freetextanswer1"
+    >
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>{{ dataSource4[1].q_text }}</mat-label>
-    <textarea matInput></textarea>
+  <mat-form-field appearance="fill" class="fullwidth" style="margin-right: 2%;" (change)="saveFreetextTwo()">
+    <input
+      type="text"
+      matInput placeholder={{dataSource4[1].q_text}}
+      id="text"
+      name="text"
+      [(ngModel)]="freetextanswer2"
+    >
   </mat-form-field>
-</div>-->
+</div>

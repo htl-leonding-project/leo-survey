@@ -13,4 +13,9 @@
 .mat-row:nth-child(even){
   background-color: lightgray;
 }
-
+.invisible {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
