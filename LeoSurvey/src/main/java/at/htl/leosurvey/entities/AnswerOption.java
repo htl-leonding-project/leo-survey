@@ -1,5 +1,6 @@
 package at.htl.leosurvey.entities;
 
+
 import javax.persistence.*;
 
 @Entity

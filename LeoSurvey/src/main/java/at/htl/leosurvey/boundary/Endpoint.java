@@ -32,6 +32,9 @@ public class Endpoint {
     @Inject
     SurveyRepository surveyRepository;
 
+    @Inject
+    AnswerRepository answerRepository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/questions")
@@ -53,6 +56,14 @@ public class Endpoint {
     public Response addChosenOption(ChosenOption chosenOption, @Context UriInfo info){
         final ChosenOption savedChosenOption = chosenOptionRepository.save(chosenOption);
         URI uri = info.getAbsolutePathBuilder().path("/leosurvey/chosenoptions/add/" + savedChosenOption.getCo_id()).build();
+        return Response.created(uri).build();
+    }
+
+    @POST
+    @Path("/answer/add")
+    public Response addAnswer(Answer answer, @Context UriInfo info){
+        final Answer savedAnswer = answerRepository.save(answer);
+        URI uri = info.getAbsolutePathBuilder().path("/leosurvey/answer/add/" + savedAnswer.getA_id()).build();
         return Response.created(uri).build();
     }
 

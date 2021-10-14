@@ -14,7 +14,6 @@ public class AnswerOptionRepository implements PanacheRepository<AnswerOption> {
 
     @Transactional
     public AnswerOption save(AnswerOption answerOption){
-        //answerOption.setAo_how_often(answerOption.getAo_how_often()+1);
         return getEntityManager().merge(answerOption);
     }
 
