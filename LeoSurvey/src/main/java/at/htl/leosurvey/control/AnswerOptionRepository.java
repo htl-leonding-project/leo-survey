@@ -6,6 +6,7 @@ import com.sun.tools.jconsole.JConsoleContext;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
