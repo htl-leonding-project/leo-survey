@@ -23,7 +23,7 @@
 <br>
 <br>
 
-<div id="btnSubmit">
+<div id="btnSubmit" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
   <button
     mat-raised-button color="secondary"
     class="mdc-button mdc-button--outlined"
