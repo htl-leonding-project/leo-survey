@@ -13,7 +13,6 @@ public class ChosenOptionRepository implements PanacheRepository<ChosenOption> {
 
     @Transactional
     public ChosenOption save(ChosenOption chosenOption){
-        chosenOption.getCo_ao().setAo_how_often(chosenOption.getCo_ao().getAo_how_often()+1);
         return getEntityManager().merge(chosenOption);
     }
 
