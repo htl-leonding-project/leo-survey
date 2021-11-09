@@ -25,12 +25,14 @@ export class QuestionService {
   getQuestions(): Question[]{
     return this.questions;
   }
+
   setOptions(data: AnswerOption[]): void{
     this.options = data;
   }
   getOptions(): AnswerOption[]{
     return this.options;
   }
+
   setFullQuestions(data: FullQuestion[]): void{
     this.fullquestions = data;
   }
@@ -46,6 +48,7 @@ export class QuestionService {
   getFullQuestions4(): FullQuestion[]{
     return this.fullquestions.slice(40);
   }
+
   setOneQuestion(data: FullQuestion): void{
     this.fullquestions.push(data);
   }
@@ -53,7 +56,10 @@ export class QuestionService {
   setOneHowoften(data: HowOften): void{
     this.howoften.push(data);
   }
-  getHowOften(): HowOften[]{
-    return this.howoften;
+  getHowOften1(): HowOften[]{
+    return this.howoften.slice(0,40);
+  }
+  getHowOften2(): HowOften[]{
+    return this.howoften.slice(40);
   }
 }

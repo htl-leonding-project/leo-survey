@@ -96,7 +96,6 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   saveToDatabase(): void {
-    console.log(this.backOptions)
     for(let x of this.backOptions){
       this.chooseOption(x).subscribe();
     }

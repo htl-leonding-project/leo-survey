@@ -28,7 +28,7 @@ export class GetResultsComponent implements OnInit {
 
   control = new FormControl('', Validators.required);
 
-  dataSource: MatTableDataSource<HowOften>;
+  dataSource1: MatTableDataSource<HowOften>;
   columnsToDisplay: string[] = ['q_text', 'q_options'];
 
   constructor(private httpClient: HttpClient, public service: QuestionService) {
@@ -37,7 +37,7 @@ export class GetResultsComponent implements OnInit {
     this.chosenOptions = [];
     this.answerOptions = [];
     this.options = [];
-    this.dataSource = new MatTableDataSource<HowOften>();
+    this.dataSource1 = new MatTableDataSource<HowOften>();
     this.start();
   }
 
@@ -58,7 +58,6 @@ export class GetResultsComponent implements OnInit {
     this.options = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
 
     console.log(this.options)
-    console.log(this.questions)
 
     for(let q of this.questions){
       this.answerOptions = [];
@@ -73,7 +72,6 @@ export class GetResultsComponent implements OnInit {
       this.ho = new HowOften(q.q_text, this.answerOptions)
       this.service.setOneHowoften(this.ho);
     }
-    console.log(this.service.getHowOften())
-    this.dataSource.data=[...this.service.getHowOften()]
+    this.dataSource1.data=[...this.service.getHowOften1()]
   }
 }

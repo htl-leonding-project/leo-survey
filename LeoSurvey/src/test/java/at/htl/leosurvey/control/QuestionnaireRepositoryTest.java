@@ -59,8 +59,8 @@ public class QuestionnaireRepositoryTest {
         questionnaireRepository.save(q2);
 
         Questionnaire q3 = questionnaireRepository.findById(2);
-        Assertions.assertEquals(q3.getQn_name(), "Test" );
-        Assertions.assertEquals(q3.getQn_description(), "Test of the Questionnaire");
+        Assertions.assertEquals(q3.getQn_name(), "Test1" );
+        Assertions.assertEquals(q3.getQn_description(), "Test1 of the Questionnaire");
     }
 
 }
