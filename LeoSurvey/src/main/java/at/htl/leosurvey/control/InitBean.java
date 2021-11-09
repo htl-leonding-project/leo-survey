@@ -39,7 +39,7 @@ public class InitBean {
         TypedQuery<Question> query = em.createQuery("select q from Question q where q.q_id = ?1", Question.class);
 
         //Questionaire
-        Questionnaire q = new Questionnaire("Lehrer-Fragebogen", "Fragebogen über einen Lehrer");
+        Questionnaire q = new Questionnaire(1L,"Lehrer-Fragebogen", "Fragebogen über einen Lehrer");
         questionnaireRepository.save(q);
 
         //Survey

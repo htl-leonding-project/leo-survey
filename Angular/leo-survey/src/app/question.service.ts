@@ -11,8 +11,8 @@ export class QuestionService {
   private questions: Question[];
   private options: AnswerOption[];
   private fullquestions: FullQuestion[];
-
   private howoften: HowOften[];
+
   constructor() {
     this.questions = [];
     this.options = [];

@@ -24,7 +24,7 @@ class TeacherTest {
     @Test
     void createTeacherTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         LocalDate dt = LocalDate.now();
         Survey s = new Survey(dt, q);
         tm.begin();

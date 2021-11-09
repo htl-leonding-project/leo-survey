@@ -23,7 +23,7 @@ class QuestionnaireTest {
     @Test
     void createQuestionnaireTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         tm.begin();
         em.persist(q);
         tm.commit();

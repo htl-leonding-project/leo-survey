@@ -36,7 +36,7 @@ public class QuestionRepositoryTest {
     @Test
     @Order(10)
     void createQuestionTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         Question qu = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
 
         questionRepository.save(qu);
@@ -58,7 +58,7 @@ public class QuestionRepositoryTest {
     @Test
     @Order(30)
     void createMultipleChoiceQuestionTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(2L, "Test", "Test of the Questionnaire");
         Question qu = new Question("MultipleChoice Question", 1, QuestionType.MULTIPLECHOICE.name(), q);
 
         questionRepository.save(qu);

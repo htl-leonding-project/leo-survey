@@ -41,7 +41,7 @@ public class ChosenOptionEndpoint {
     @POST
     @Path("/chosenoptions/add")
     public Response addChosenOption(ChosenOption chosenOption, @Context UriInfo info){
-        AnswerOption ao = answerOptionRepository.findAllOptions().get(Math.toIntExact(chosenOption.getCo_ao().getAo_id()));
+        AnswerOption ao = answerOptionRepository.findAllOptions().get(Math.toIntExact(chosenOption.getCo_ao().getAo_id()-1));
         ao.setAo_how_often(ao.getAo_how_often() + 1);
         chosenOption.setCo_ao(ao);
         final ChosenOption savedChosenOption = chosenOptionRepository.save(chosenOption);

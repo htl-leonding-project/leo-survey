@@ -57,7 +57,8 @@ export class GetResultsComponent implements OnInit {
     this.chosenOptions = await this.httpClient.get<ChosenOption[]>('http://localhost:8080/leosurvey/chosenoptions/' + survey.s_questionnaire.qn_id).toPromise();
     this.options = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
 
-    console.log(this.chosenOptions)
+    console.log(this.options)
+    console.log(this.questions)
 
     for(let q of this.questions){
       this.answerOptions = [];

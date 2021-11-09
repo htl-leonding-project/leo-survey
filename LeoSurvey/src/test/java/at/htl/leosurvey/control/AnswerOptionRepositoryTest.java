@@ -28,7 +28,7 @@ public class AnswerOptionRepositoryTest {
     @Test
     @Order(10)
     void createAnswerOptionTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
 
         answerOptionRepository.save(new AnswerOption("Yes", 1, 1, qn, 0));
