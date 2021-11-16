@@ -11,7 +11,7 @@
 </div>
 
 
-<div>
+<div id="ds1">
   <table mat-table style="float:left" [dataSource]="dataSource1">
     <ng-container matColumnDef="q_text">
       <th mat-header-cell *matHeaderCellDef> Questions </th>
@@ -29,4 +29,19 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
   </table>
+</div>
+
+<div id="ds2">
+  <h5>An diesem Lehrer gefällt mir, </h5>
+  <ul>
+    <li *ngFor="let a of answers">
+      {{ displayAnswerText1(a, 41) }}</li>
+  </ul>
+</div>
+
+<div id="ds3">
+  <h5>An diesem Lehrer stört mich, </h5>
+  <ul>
+    <li *ngFor="let a of answers">{{ displayAnswerText1(a, 42) }}</li>
+  </ul>
 </div>

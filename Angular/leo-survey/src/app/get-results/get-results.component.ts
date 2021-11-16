@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/model/question';
 import { FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { Answer } from 'src/model/answer';
 
 @Component({
   selector: 'app-get-results',
@@ -23,6 +24,7 @@ export class GetResultsComponent implements OnInit {
   answerOptions: AnswerOption[];
   options: AnswerOption[];
   surveyList: Survey[];
+  answers: Answer[];
 
   ho: HowOften;
 
@@ -37,6 +39,7 @@ export class GetResultsComponent implements OnInit {
     this.chosenOptions = [];
     this.answerOptions = [];
     this.options = [];
+    this.answers = [];
     this.dataSource1 = new MatTableDataSource<HowOften>();
     this.start();
   }
@@ -56,7 +59,9 @@ export class GetResultsComponent implements OnInit {
     this.questions = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions/' + survey.s_questionnaire.qn_id).toPromise();
     this.chosenOptions = await this.httpClient.get<ChosenOption[]>('http://localhost:8080/leosurvey/chosenoptions/' + survey.s_questionnaire.qn_id).toPromise();
     this.options = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
+    this.answers = await this.httpClient.get<Answer[]>('http://localhost:8080/leosurvey/answer').toPromise();
 
+    console.log(this.answers)
     console.log(this.options)
 
     for(let q of this.questions){
@@ -72,6 +77,14 @@ export class GetResultsComponent implements OnInit {
       this.ho = new HowOften(q.q_text, this.answerOptions)
       this.service.setOneHowoften(this.ho);
     }
+
     this.dataSource1.data=[...this.service.getHowOften1()]
   }
+
+  displayAnswerText(a: Answer, q: number): String {
+    if(a.q_question.q_id == q){
+      return a.a_answer_text;
+    }
+  }
+
 }

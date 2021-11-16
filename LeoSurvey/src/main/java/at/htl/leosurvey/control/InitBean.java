@@ -198,10 +198,10 @@ public class InitBean {
         Question q31 = new Question("Wie zufrieden bist du mit deinem LEHRER insgesamt?", 40,
                 QuestionType.SINGLECHOICE.name(),
                 (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
-        Question q32 = new Question("An diesem Lehrer gefällt mir,", 41,
+        Question q32 = new Question("An diesem Lehrer gefaellt mir,", 41,
                 QuestionType.FREETEXT.name(),
                 (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
-        Question q33 = new Question("An diesem Lehrer stört mich, ", 42,
+        Question q33 = new Question("An diesem Lehrer stoert mich, ", 42,
                 QuestionType.FREETEXT.name(),
                 (Questionnaire) em.createQuery("select q from Questionnaire q where q.qn_id = 1").getSingleResult());
 
