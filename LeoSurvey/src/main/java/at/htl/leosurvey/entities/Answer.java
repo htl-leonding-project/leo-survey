@@ -8,7 +8,7 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long a_id;
     private String a_answer_text;
-    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Question q_question;
 
     public Answer() {
@@ -37,5 +37,14 @@ public class Answer {
 
     public void setQ_question(Question q_question) {
         this.q_question = q_question;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "a_id=" + a_id +
+                ", a_answer_text='" + a_answer_text + '\'' +
+                ", q_question=" + q_question +
+                '}';
     }
 }

@@ -1,19 +1,28 @@
 package at.htl.leosurvey.control;
 
 import at.htl.leosurvey.entities.ChosenOption;
+import at.htl.leosurvey.entities.Question;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
 public class ChosenOptionRepository implements PanacheRepository<ChosenOption> {
+    @Inject
+    QuestionRepository questionRepository;
 
     @Transactional
     public ChosenOption save(ChosenOption chosenOption){
-        return getEntityManager().merge(chosenOption);
+        System.out.println("Test " + chosenOption.getCo_q().getQ_id());
+        final Question q = questionRepository.findById(chosenOption.getCo_q().getQ_id());
+        chosenOption.getCo_a().setQ_question(q);
+        var opasd = getEntityManager().merge(chosenOption);
+        System.out.println(opasd);
+        return opasd;
     }
 
     public List<ChosenOption> findAllOptions(){

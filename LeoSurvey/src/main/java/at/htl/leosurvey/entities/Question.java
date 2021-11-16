@@ -12,7 +12,7 @@ public class Question {
     //private Blob q_image;
     private int q_sequenceNumber; //???
     private String q_type;
-    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE, CascadeType.MERGE})
     private Questionnaire q_questionnaire;
 
     public Question() {
@@ -73,4 +73,17 @@ public class Question {
     public void setQ_questionnaire(Questionnaire q_questionnaire) {
         this.q_questionnaire = q_questionnaire;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "q_id=" + q_id +
+                ", q_text='" + q_text + '\'' +
+                ", q_sequenceNumber=" + q_sequenceNumber +
+                ", q_type='" + q_type + '\'' +
+                ", q_questionnaire=" + q_questionnaire +
+                '}';
+    }
 }
+
+

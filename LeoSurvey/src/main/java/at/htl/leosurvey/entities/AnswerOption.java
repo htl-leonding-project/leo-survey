@@ -74,4 +74,16 @@ public class AnswerOption {
     public void setAo_how_often(int ao_how_often) {
         this.ao_how_often = ao_how_often;
     }
+
+    @Override
+    public String toString() {
+        return "AnswerOption{" +
+                "ao_id=" + ao_id +
+                ", ao_text='" + ao_text + '\'' +
+                ", ao_value=" + ao_value +
+                ", ao_sequenceNumber=" + ao_sequenceNumber +
+                ", ao_question=" + ao_question +
+                ", ao_how_often=" + ao_how_often +
+                '}';
+    }
 }

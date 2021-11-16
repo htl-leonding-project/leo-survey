@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GetResultsComponent } from './get-results/get-results.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CongratulationComponent } from './congratulation/congratulation.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CongratulationComponent } from './congratulation/congratulation.compone
     AppRoutingModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

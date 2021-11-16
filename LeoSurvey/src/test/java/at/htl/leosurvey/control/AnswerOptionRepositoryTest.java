@@ -7,10 +7,7 @@ import at.htl.leosurvey.entities.Questionnaire;
 import at.htl.leosurvey.misc.DataSource;
 import io.quarkus.test.junit.QuarkusTest;
 import org.assertj.db.type.Table;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import javax.inject.Inject;
 

@@ -1,3 +1,4 @@
+import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -92,6 +93,7 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption> {
+    console.log(back_chosenOption);
     return this.httpClient.post<ChosenOption>('http://localhost:8080/leosurvey/chosenoptions/add', back_chosenOption);
   }
 
