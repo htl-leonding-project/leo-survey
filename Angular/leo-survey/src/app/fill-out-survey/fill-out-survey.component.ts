@@ -39,8 +39,8 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    const questions : Question[] = await this.httpClient.get<Question[]>('https://localhost:8080/leosurvey/questions').toPromise();
-    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('https://localhost:8080/leosurvey/options').toPromise();
+    const questions : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
+    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
 
     this.service.setQuestions(questions);
     this.service.setOptions(options);
@@ -90,7 +90,7 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption> {
-    return this.httpClient.post<ChosenOption>('https://localhost:8080/leosurvey/chosenoptions/add', back_chosenOption);
+    return this.httpClient.post<ChosenOption>('http://localhost:8080/leosurvey/chosenoptions/add', back_chosenOption);
   }
 
   saveToDatabase(): void {
