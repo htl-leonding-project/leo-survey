@@ -39,11 +39,9 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    //const questions : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
-    //const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
+    const questions : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
+    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
 
-    const questions : Question[] = await this.httpClient.get<Question[]>('vm08.htl-leonding.ac.at:8080/leosurvey/questions').toPromise();
-    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('vm08.htl-leonding.ac.at:8080/leosurvey/options').toPromise();
     this.service.setQuestions(questions);
     this.service.setOptions(options);
 
