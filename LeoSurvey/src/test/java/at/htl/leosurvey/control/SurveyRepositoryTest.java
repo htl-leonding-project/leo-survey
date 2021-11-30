@@ -27,7 +27,7 @@ public class SurveyRepositoryTest {
     @Test
     @Order(10)
     void createSurveyTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         LocalDate d = LocalDate.now();
         Survey s = new Survey(d, q);
 

@@ -1,6 +1,8 @@
+import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Answer } from 'src/model/answer';
 import { AnswerOption } from 'src/model/answer-option';
@@ -72,21 +74,18 @@ export class FillOutSurveyComponent implements OnInit {
   saveOption(option: AnswerOption): void{
     let back_answer: Answer = new Answer(option.ao_question.q_id, option.ao_text, option.ao_question);
     let back_chosenOption: ChosenOption = new ChosenOption(option.ao_question.q_id, option, back_answer, option.ao_question, this.transactioncode);
-    console.log(back_chosenOption)
     this.backOptions.push(back_chosenOption);
   }
 
   saveFreetextOne(): void{
     let back_answer: Answer = new Answer(41, this.freetextanswer1, null);
-    let back_chosenOption: ChosenOption = new ChosenOption(41, null, back_answer, null, this.transactioncode);
-    console.log(this.freetextanswer1);
+    let back_chosenOption: ChosenOption = new ChosenOption(41, null, back_answer, this.dataSource4[0], this.transactioncode);
     this.backOptions.push(back_chosenOption);
   }
 
   saveFreetextTwo(): void{
     let back_answer: Answer = new Answer(42, this.freetextanswer2, null);
-    let back_chosenOption: ChosenOption = new ChosenOption(42, null, back_answer, null, this.transactioncode);
-    console.log(this.freetextanswer2);
+    let back_chosenOption: ChosenOption = new ChosenOption(42, null, back_answer, this.dataSource4[1], this.transactioncode);
     this.backOptions.push(back_chosenOption);
   }
 

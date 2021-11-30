@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/model/question';
 import { FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { Answer } from 'src/model/answer';
 
 @Component({
   selector: 'app-get-results',
@@ -23,12 +24,13 @@ export class GetResultsComponent implements OnInit {
   answerOptions: AnswerOption[];
   options: AnswerOption[];
   surveyList: Survey[];
+  answers: Answer[];
 
   ho: HowOften;
 
   control = new FormControl('', Validators.required);
 
-  dataSource: MatTableDataSource<HowOften>;
+  dataSource1: MatTableDataSource<HowOften>;
   columnsToDisplay: string[] = ['q_text', 'q_options'];
 
   constructor(private httpClient: HttpClient, public service: QuestionService) {
@@ -37,7 +39,8 @@ export class GetResultsComponent implements OnInit {
     this.chosenOptions = [];
     this.answerOptions = [];
     this.options = [];
-    this.dataSource = new MatTableDataSource<HowOften>();
+    this.answers = [];
+    this.dataSource1 = new MatTableDataSource<HowOften>();
     this.start();
   }
 
@@ -56,8 +59,7 @@ export class GetResultsComponent implements OnInit {
     this.questions = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions/' + survey.s_questionnaire.qn_id).toPromise();
     this.chosenOptions = await this.httpClient.get<ChosenOption[]>('http://localhost:8080/leosurvey/chosenoptions/' + survey.s_questionnaire.qn_id).toPromise();
     this.options = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
-
-    console.log(this.chosenOptions)
+    this.answers = await this.httpClient.get<Answer[]>('http://localhost:8080/leosurvey/answer').toPromise();
 
     for(let q of this.questions){
       this.answerOptions = [];
@@ -72,7 +74,14 @@ export class GetResultsComponent implements OnInit {
       this.ho = new HowOften(q.q_text, this.answerOptions)
       this.service.setOneHowoften(this.ho);
     }
-    console.log(this.service.getHowOften())
-    this.dataSource.data=[...this.service.getHowOften()]
+
+    this.dataSource1.data=[...this.service.getHowOften1()]
   }
+
+  displayAnswerText(a: Answer, q: number): String {
+    if(a.q_question.q_id == q){
+      return a.a_answer_text;
+    }
+  }
+
 }

@@ -48,7 +48,7 @@ public class Simulation {
     @Test
     @Order(10)
     void createFullSurvey(){
-        Questionnaire q = new Questionnaire("Questionnaire", "Survey about the current Situation");
+        Questionnaire q = new Questionnaire(1L, "Questionnaire", "Survey about the current Situation");
         questionnaireRepository.save(q);
 
         LocalDate d = LocalDate.now();

@@ -39,7 +39,7 @@ public class S_TransactionRepositoryTest {
     @Test
     @Order(10)
     void createTransactionTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         LocalDate dt = LocalDate.now();
         Survey survey = new Survey(dt, q);
 

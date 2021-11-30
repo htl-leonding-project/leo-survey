@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Questionnaire {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Long qn_id;
     private String qn_name;
     private String qn_description;
@@ -16,9 +16,14 @@ public class Questionnaire {
     public Questionnaire() {
     }
 
-    public Questionnaire(String qn_name, String qn_description) {
+    public Questionnaire(Long qn_id, String qn_name, String qn_description) {
+        this.qn_id = qn_id;
         this.qn_name = qn_name;
         this.qn_description = qn_description;
+    }
+
+    public void setQn_id(Long qn_id) {
+        this.qn_id = qn_id;
     }
 
     public Long getQn_id() {

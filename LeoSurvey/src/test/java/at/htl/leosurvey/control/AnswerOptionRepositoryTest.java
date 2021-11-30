@@ -7,10 +7,7 @@ import at.htl.leosurvey.entities.Questionnaire;
 import at.htl.leosurvey.misc.DataSource;
 import io.quarkus.test.junit.QuarkusTest;
 import org.assertj.db.type.Table;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import javax.inject.Inject;
 
@@ -28,7 +25,7 @@ public class AnswerOptionRepositoryTest {
     @Test
     @Order(10)
     void createAnswerOptionTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
 
         answerOptionRepository.save(new AnswerOption("Yes", 1, 1, qn, 0));

@@ -23,7 +23,7 @@ class QuestionTest {
     @Test
     void createQuestionTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         tm.begin();
         em.persist(q);
         em.persist(new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q));

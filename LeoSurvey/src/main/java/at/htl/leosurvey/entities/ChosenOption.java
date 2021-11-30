@@ -61,4 +61,15 @@ public class ChosenOption {
     public void setTransaction_code(String transaction_code) {
         this.transaction_code = transaction_code;
     }
+
+    @Override
+    public String toString() {
+        return "ChosenOption{" +
+                "co_id=" + co_id +
+                ", co_ao=" + co_ao +
+                ", co_a=" + co_a +
+                ", co_q=" + co_q +
+                ", transaction_code='" + transaction_code + '\'' +
+                '}';
+    }
 }

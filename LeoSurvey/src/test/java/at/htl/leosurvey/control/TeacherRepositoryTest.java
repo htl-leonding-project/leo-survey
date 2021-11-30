@@ -28,7 +28,7 @@ public class TeacherRepositoryTest {
     @Test
     @Order(10)
     void createTeacherTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         LocalDate dt = LocalDate.now();
         Survey s = new Survey(dt, q);
         teacherRepository.save(new Teacher("Teach", s));

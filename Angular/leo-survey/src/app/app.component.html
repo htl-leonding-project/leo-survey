@@ -1,5 +1,9 @@
-<button [routerLink]="['']">Home</button>
-<button [routerLink]="['fillout']">Fill Out Survey</button>
-<button [routerLink]="['getresults']">Get Results</button>
-<br/>
+<mat-toolbar color="primary">
+  <span>LeoSurvey</span>
+  <button mat-flat-button [routerLink]="['fillout']">Fill Out Survey</button>
+ <button mat-flat-button [routerLink]="['getresults']">Get Results</button>
+</mat-toolbar>
+
 <router-outlet></router-outlet>
+
+

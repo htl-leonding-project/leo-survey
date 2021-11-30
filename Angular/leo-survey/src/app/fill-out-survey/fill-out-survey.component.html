@@ -5,29 +5,19 @@
     id="text"
     name="text"
     [(ngModel)]="transactioncode"
+    (ngModelChange)="load()"
   >
 </mat-form-field>
 
-<br>
-
-<button
-  [disabled]="disabled"
-  mat-raised-button
-  color="secondary"
-  class="mdc-button mdc-button--outlined"
-  (click)="load()"
-  >
-  Load Questions
-</button>
-
-<br>
-<br>
-
-<div id="btnSubmit">
-  <button mat-raised-button color="secondary" class="mdc-button mdc-button--outlined" (click)="saveToDatabase()">Submit</button>
+<div id="btnSubmit" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
+  <button
+    mat-raised-button color="secondary"
+    class="mdc-button mdc-button--outlined"
+    routerLink="/congratulation"
+    (click)="saveToDatabase()"
+    >Submit
+  </button>
 </div>
-
-<br>
 
 <div id="ds1" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
   <table mat-table style="float:left" [dataSource]="dataSource1">

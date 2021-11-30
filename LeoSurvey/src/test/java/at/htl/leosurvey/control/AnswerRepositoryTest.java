@@ -28,7 +28,7 @@ public class AnswerRepositoryTest {
     @Test
     @Order(10)
     void createAnswerTest(){
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         Question qn = new Question("Yes or No", 1, QuestionType.SINGLECHOICE.name(), q);
         answerRepository.save(new Answer("Yes", qn));
         assertThat(a).hasNumberOfRows(1);

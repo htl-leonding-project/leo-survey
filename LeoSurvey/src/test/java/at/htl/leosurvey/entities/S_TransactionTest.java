@@ -22,7 +22,7 @@ class S_TransactionTest {
     @Test
     void createS_TransactionTest() throws SystemException, NotSupportedException,
             HeuristicRollbackException, HeuristicMixedException, RollbackException {
-        Questionnaire q = new Questionnaire("Test", "Test of the Questionnaire");
+        Questionnaire q = new Questionnaire(1L, "Test", "Test of the Questionnaire");
         LocalDate dt = LocalDate.now();
         Survey survey = new Survey(dt, q);
         tm.begin();
