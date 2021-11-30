@@ -32,19 +32,23 @@
 </div>
 
 <div id="ds2">
-  <h5>An diesem Lehrer gefällt mir, </h5>
-  <ul>
-    <li *ngFor="let a of answers">
-      {{ displayAnswerText(a, 41) }}
-    </li>
-  </ul>
+  <h5>An diesem Lehrer gefällt mir: </h5>
+  <ng-container *ngFor="let a of answers">
+    <ul>
+      <li *ngIf="a.q_question.q_id == 41">
+          {{a.a_answer_text}}
+      </li>
+    </ul>
+  </ng-container>
 </div>
 
 <div id="ds3">
-  <h5>An diesem Lehrer stört mich, </h5>
-  <ul>
-    <li *ngFor="let a of answers">
-      {{ displayAnswerText(a, 42) }}
-    </li>
-  </ul>
+  <h5>An diesem Lehrer stört mich: </h5>
+  <ng-container *ngFor="let a of answers">
+    <ul>
+      <li *ngIf="a.q_question.q_id == 42">
+          {{a.a_answer_text}}
+      </li>
+    </ul>
+  </ng-container>
 </div>
