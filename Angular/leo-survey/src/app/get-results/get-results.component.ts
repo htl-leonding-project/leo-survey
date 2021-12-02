@@ -1,5 +1,5 @@
 import { ChosenOption } from 'src/model/chosen-option';
-import { QuestionService } from './../question.service';
+import { LeosurveyService } from '../leosurvey.service';
 import { AnswerOption } from 'src/model/answer-option';
 import { HowOften } from './../../model/how-often';
 import { Survey } from './../../model/survey';
@@ -33,7 +33,9 @@ export class GetResultsComponent implements OnInit {
   dataSource1: MatTableDataSource<HowOften>;
   columnsToDisplay: string[] = ['q_text', 'q_options'];
 
-  constructor(private httpClient: HttpClient, public service: QuestionService) {
+  hidden: boolean = true;
+
+  constructor(private httpClient: HttpClient, public service: LeosurveyService) {
     this.questionnaires = [];
     this.questions = [];
     this.chosenOptions = [];
@@ -45,7 +47,7 @@ export class GetResultsComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-
+    this.hidden = true;
   }
 
   async start(): Promise<void> {
@@ -53,6 +55,7 @@ export class GetResultsComponent implements OnInit {
   }
 
   async getData(): Promise<void> {
+    this.hidden = false;
     let survey: Survey = this.control.value;
 
     this.questionnaires = await this.httpClient.get<Questionnaire[]>('http://localhost:8080/leosurvey/questionnaire/' + survey.s_questionnaire.qn_id).toPromise();

@@ -8,7 +8,7 @@ import { Answer } from 'src/model/answer';
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionService {
+export class LeosurveyService {
   private questions: Question[];
   private options: AnswerOption[];
   private fullquestions: FullQuestion[];

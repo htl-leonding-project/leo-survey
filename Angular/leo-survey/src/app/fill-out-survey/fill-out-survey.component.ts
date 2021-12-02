@@ -9,7 +9,7 @@ import { AnswerOption } from 'src/model/answer-option';
 import { ChosenOption } from 'src/model/chosen-option';
 import { FullQuestion } from 'src/model/full-question';
 import { Question } from 'src/model/question';
-import { QuestionService } from '../question.service';
+import { LeosurveyService } from '../leosurvey.service';
 
 @Component({
   selector: 'app-fill-out-survey',
@@ -32,7 +32,7 @@ export class FillOutSurveyComponent implements OnInit {
   transactioncode: String = '';
   disabled: Boolean = true;
 
-  constructor(private httpClient: HttpClient, public service: QuestionService) {
+  constructor(private httpClient: HttpClient, public service: LeosurveyService) {
     this.dataSource1 = new MatTableDataSource<FullQuestion>();
     this.dataSource2 = new MatTableDataSource<FullQuestion>();
     this.dataSource3 = new MatTableDataSource<FullQuestion>();

@@ -11,7 +11,7 @@
 </div>
 
 
-<div id="ds1">
+<div id="ds1" [ngStyle]="{'visibility':hidden === true ? 'hidden' : '' }">
   <table mat-table style="float:left" [dataSource]="dataSource1">
     <ng-container matColumnDef="q_text">
       <th mat-header-cell *matHeaderCellDef> Questions </th>
@@ -31,7 +31,7 @@
   </table>
 </div>
 
-<div id="ds2">
+<div id="ds2" [ngStyle]="{'visibility':hidden === true ? 'hidden' : '' }">
   <h5>An diesem Lehrer gefällt mir: </h5>
   <ng-container *ngFor="let a of answers">
     <ul>
@@ -42,7 +42,7 @@
   </ng-container>
 </div>
 
-<div id="ds3">
+<div id="ds3" [ngStyle]="{'visibility':hidden === true ? 'hidden' : '' }">
   <h5>An diesem Lehrer stört mich: </h5>
   <ng-container *ngFor="let a of answers">
     <ul>
