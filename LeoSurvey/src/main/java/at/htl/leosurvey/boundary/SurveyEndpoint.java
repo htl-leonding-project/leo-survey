@@ -23,4 +23,5 @@ public class SurveyEndpoint {
         final List<Survey> surveys = surveyRepository.findAllSurveys();
         return Response.ok(surveys).build();
     }
+
 }
