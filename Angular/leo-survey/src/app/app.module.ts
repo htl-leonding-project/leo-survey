@@ -19,13 +19,15 @@ import { GetResultsComponent } from './get-results/get-results.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CongratulationComponent } from './congratulation/congratulation.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FillOutSurveyComponent,
     GetResultsComponent,
-    CongratulationComponent
+    CongratulationComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
