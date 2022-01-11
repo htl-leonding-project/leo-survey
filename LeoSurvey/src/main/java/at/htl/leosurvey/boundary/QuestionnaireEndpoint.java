@@ -28,7 +28,7 @@ public class QuestionnaireEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/questionnaire/{id}")
-    public Response findQuestionnaireById(@PathParam("id") long id){
+    public Response findQuestionnaireById(@PathParam("id") long id) {
         final Questionnaire questionnaire = questionnaireRepository.findById(id);
         return Response.ok(questionnaire).build();
     }
