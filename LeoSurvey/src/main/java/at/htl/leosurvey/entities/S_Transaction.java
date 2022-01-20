@@ -50,13 +50,5 @@ public class S_Transaction {
         this.t_survey = t_survey;
     }
 
-    public String generateTransactionCode(){
-        Random r = new Random();
-        String back = "";
-        for(int i = 0; i < 16; i++){
-            char c = (char)(r.nextInt(26) + 'a');
-            back += c;
-        }
-        return back;
-    }
+
 }
