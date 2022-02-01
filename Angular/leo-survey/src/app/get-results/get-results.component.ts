@@ -10,6 +10,7 @@ import { Question } from 'src/model/question';
 import { FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Answer } from 'src/model/answer';
+import {environment} from "src/environments/environment";
 
 @Component({
   selector: 'app-get-results',
@@ -51,18 +52,18 @@ export class GetResultsComponent implements OnInit {
   }
 
   async start(): Promise<void> {
-    this.surveyList = await this.httpClient.get<Survey[]>('http://localhost:8080/leosurvey/survey').toPromise();
+    this.surveyList = await this.httpClient.get<Survey[]>(`${environment.backend_baseurl}/leosurvey/survey`).toPromise();
   }
 
   async getData(): Promise<void> {
     this.hidden = false;
     let survey: Survey = this.control.value;
 
-    this.questionnaires = await this.httpClient.get<Questionnaire[]>('http://localhost:8080/leosurvey/questionnaire/' + survey.s_questionnaire.qn_id).toPromise();
-    this.questions = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions/' + survey.s_questionnaire.qn_id).toPromise();
-    this.chosenOptions = await this.httpClient.get<ChosenOption[]>('http://localhost:8080/leosurvey/chosenoptions/' + survey.s_questionnaire.qn_id).toPromise();
-    this.options = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
-    this.answers = await this.httpClient.get<Answer[]>('http://localhost:8080/leosurvey/answer').toPromise();
+    this.questionnaires = await this.httpClient.get<Questionnaire[]>(`${environment.backend_baseurl}/leosurvey/questionnaire/` + survey.s_questionnaire.qn_id).toPromise();
+    this.questions = await this.httpClient.get<Question[]>(`${environment.backend_baseurl}/leosurvey/questions/` + survey.s_questionnaire.qn_id).toPromise();
+    this.chosenOptions = await this.httpClient.get<ChosenOption[]>(`${environment.backend_baseurl}/leosurvey/chosenoptions/` + survey.s_questionnaire.qn_id).toPromise();
+    this.options = await this.httpClient.get<AnswerOption[]>(`${environment.backend_baseurl}/leosurvey/options`).toPromise();
+    this.answers = await this.httpClient.get<Answer[]>(`${environment.backend_baseurl}/leosurvey/answer`).toPromise();
 
     for(let q of this.questions){
       this.answerOptions = [];

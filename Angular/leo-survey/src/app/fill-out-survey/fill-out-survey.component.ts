@@ -10,6 +10,7 @@ import { ChosenOption } from 'src/model/chosen-option';
 import { FullQuestion } from 'src/model/full-question';
 import { Question } from 'src/model/question';
 import { LeosurveyService } from '../leosurvey.service';
+import {environment} from "src/environments/environment";
 
 @Component({
   selector: 'app-fill-out-survey',
@@ -39,8 +40,8 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    const questions : Question[] = await this.httpClient.get<Question[]>('http://localhost:8080/leosurvey/questions').toPromise();
-    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>('http://localhost:8080/leosurvey/options').toPromise();
+    const questions : Question[] = await this.httpClient.get<Question[]>(`${environment.backend_baseurl}/leosurvey/questions`).toPromise();
+    const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>(`${environment.backend_baseurl}/leosurvey/options`).toPromise();
 
     this.service.setQuestions(questions);
     this.service.setOptions(options);
@@ -90,7 +91,7 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   chooseOption(back_chosenOption: ChosenOption): Observable<ChosenOption> {
-    return this.httpClient.post<ChosenOption>('http://localhost:8080/leosurvey/chosenoptions/add', back_chosenOption);
+    return this.httpClient.post<ChosenOption>(`${environment.backend_baseurl}/leosurvey/chosenoptions/add`, back_chosenOption);
   }
 
   saveToDatabase(): void {
