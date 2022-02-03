@@ -1,7 +1,9 @@
 package at.htl.leosurvey.boundary;
 
+import at.htl.leosurvey.control.QuestionnaireRepository;
 import at.htl.leosurvey.control.S_TransactionRepository;
 import at.htl.leosurvey.control.SurveyRepository;
+import at.htl.leosurvey.entities.Questionnaire;
 import at.htl.leosurvey.entities.S_Transaction;
 import at.htl.leosurvey.entities.Survey;
 
@@ -11,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.time.LocalDate;
 import java.util.List;
 
 @Path("leosurvey")
@@ -20,6 +23,9 @@ public class SurveyEndpoint {
 
     @Inject
     S_TransactionRepository transactionRepository;
+
+    @Inject
+    QuestionnaireRepository questionnaireRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -31,13 +37,18 @@ public class SurveyEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/createTransactions")
-    public Response createTransactions(Survey survey, int amount){
-        final List<String> transactions = this.transactionRepository.generateTransactionCode(survey,amount);
+    @Path("/createSurvey")
+    public Response createTransactions(int amount){
+        Questionnaire questionnaire = questionnaireRepository.findById(1);
+        Survey survey1 = new Survey(LocalDate.now(),questionnaire);
+        final List<String> transactions = this.transactionRepository.generateTransactionCode(survey1,amount);
+        surveyRepository.save(survey1);
         return Response
                 .ok()
                 .entity(transactions)
                 .build();
+
+
 
     }
 }
