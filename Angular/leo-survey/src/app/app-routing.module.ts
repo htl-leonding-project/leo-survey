@@ -1,3 +1,5 @@
+import { NewSurveyComponent } from './new-survey/new-survey.component';
+import { HomepageComponent } from './homepage/homepage.component';
 import { CongratulationComponent } from './congratulation/congratulation.component';
 import { AppComponent } from './app.component';
 import { GetResultsComponent } from './get-results/get-results.component';
@@ -10,8 +12,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'fillout', component: FillOutSurveyComponent },
   { path: 'getresults', component: GetResultsComponent },
-  { path: 'home', component: AppComponent },
-  { path: 'congratulation', component: CongratulationComponent }
+  { path: 'home', component: HomepageComponent },
+  { path: '', component: HomepageComponent },
+  { path: 'congratulation', component: CongratulationComponent },
+  { path: 'new', component: NewSurveyComponent }
 ];
 
 
