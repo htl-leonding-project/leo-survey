@@ -12,7 +12,7 @@ services:
             POSTGRES_PASSWORD: app
 
     frontend:
-        image: in4nis/leo-survey:frontend
+        build: Angular/leo-survey/
         restart: unless-stopped
         hostname: frontend
         ports:
@@ -23,11 +23,11 @@ services:
             - backend
 
     backend:
-        image: in4nis/leo-survey:backend
+        image: lsadmin/leo-survey:1.0-SNAPSHOT
         restart: unless-stopped
         hostname: backend
         ports:
-            - "5000:8080"
+            - "8443:8080"
         links:
             - database
         depends_on:
