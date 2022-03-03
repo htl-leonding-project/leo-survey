@@ -1,3 +1,4 @@
+import { LeosurveyService } from './../leosurvey.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { S_Transactioncode } from './../../model/transactioncode';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +17,7 @@ export class NewSurveyComponent implements OnInit {
   columnsToDisplay: string[] = ['t_transactioncode', 't_is_used'];
   hidden: boolean = true;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private service: LeosurveyService) {
     this.dataSource = new MatTableDataSource<S_Transactioncode>();
    }
 
@@ -26,7 +27,8 @@ export class NewSurveyComponent implements OnInit {
 
   async getCodes(){
     this.hidden = false;
-    const trcodes : S_Transactioncode[] = await this.httpClient.get<S_Transactioncode[]>(`${environment.backend_baseurl}/leosurvey/createSurvey/` + this.trcodecount).toPromise();
+    let trcodes : S_Transactioncode[] = await this.httpClient.get<S_Transactioncode[]>(`${environment.backend_baseurl}/leosurvey/createSurvey/` + this.trcodecount).toPromise();
+    this.service.setTrCodes(trcodes);
     this.dataSource.data=[...trcodes];
   }
 

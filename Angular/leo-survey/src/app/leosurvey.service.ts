@@ -1,3 +1,4 @@
+import { S_Transactioncode } from './../model/transactioncode';
 import { FullQuestion } from './../model/full-question';
 import { AnswerOption } from './../model/answer-option';
 import { Question } from './../model/question';
@@ -14,6 +15,7 @@ export class LeosurveyService {
   private fullquestions: FullQuestion[];
   private howoften: HowOften[];
   private answers: Answer[];
+  private trcodes: S_Transactioncode[];
 
   constructor() {
     this.questions = [];
@@ -61,5 +63,12 @@ export class LeosurveyService {
   }
   getHowOften1(): HowOften[]{
     return this.howoften.slice(0,40);
+  }
+
+  setTrCodes(data: S_Transactioncode[]): void{
+    this.trcodes = data;
+  }
+  getTrCodes(): S_Transactioncode[]{
+    return this.trcodes;
   }
 }

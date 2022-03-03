@@ -32,8 +32,9 @@ export class FillOutSurveyComponent implements OnInit {
   backOptions: ChosenOption[] = [];
   transactioncode: String = '';
   disabled: Boolean = true;
+  tanInvalid: Boolean = false;
 
-  constructor(private httpClient: HttpClient, public service: LeosurveyService) {
+  constructor(private httpClient: HttpClient, public service: LeosurveyService, public router: Router) {
     this.dataSource1 = new MatTableDataSource<FullQuestion>();
     this.dataSource2 = new MatTableDataSource<FullQuestion>();
     this.dataSource3 = new MatTableDataSource<FullQuestion>();
@@ -65,7 +66,15 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   async load(): Promise<void> {
-
+    let codes = this.service.getTrCodes();
+    codes.forEach(element => {
+      if (element.t_transactioncode != this.transactioncode || element.t_is_used == true) {
+        this.tanInvalid = true;
+        this.router.navigate(['/home'])
+      }else{
+        element.t_is_used = true;
+      }
+    });
     this.dataSource1.data=[...this.service.getFullQuestions1()];
     this.dataSource2.data=[...this.service.getFullQuestions2()];
     this.dataSource3.data=[...this.service.getFullQuestions3()];
