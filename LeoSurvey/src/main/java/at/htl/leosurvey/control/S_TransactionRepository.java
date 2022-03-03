@@ -5,6 +5,7 @@ import at.htl.leosurvey.entities.Survey;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.Random;
 
 @ApplicationScoped
 public class S_TransactionRepository implements PanacheRepository<S_Transaction> {
+     @Inject
+     SurveyRepository surveyRepository;
 
      @Transactional
      public S_Transaction save(S_Transaction s_transaction){
@@ -19,9 +22,11 @@ public class S_TransactionRepository implements PanacheRepository<S_Transaction>
      }
 
      @Transactional
-     public List<String> generateTransactionCode(Survey survey, int amount){
-          final LinkedList<String> transactions = new LinkedList<>();
-
+     public List<S_Transaction> generateTransactionCode(Survey survey, int amount){
+          final LinkedList<S_Transaction> transactions = new LinkedList<>();
+          System.out.println(survey.getS_id());
+          survey = surveyRepository.find("id", survey.getS_id()).firstResult();
+          System.out.println(survey);
 
           Random r = new Random();
           String back = "";
@@ -35,7 +40,7 @@ public class S_TransactionRepository implements PanacheRepository<S_Transaction>
                transaction.setT_is_used(false);
                transaction.setT_survey(survey);
                getEntityManager().persist(transaction);
-               transactions.add(transaction.getT_transactioncode());
+               transactions.add(transaction);
                back = "";
           }
           return transactions;

@@ -6,8 +6,8 @@ import java.time.LocalDate;
 @Entity
 public class Survey {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int s_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long s_id;
     private LocalDate s_date;
     @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Questionnaire s_questionnaire;
@@ -20,7 +20,7 @@ public class Survey {
         this.s_questionnaire = s_questionnaire;
     }
 
-    public int getS_id() {
+    public Long getS_id() {
         return s_id;
     }
 

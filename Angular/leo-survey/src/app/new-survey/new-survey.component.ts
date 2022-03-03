@@ -26,8 +26,7 @@ export class NewSurveyComponent implements OnInit {
 
   async getCodes(){
     this.hidden = false;
-    const trcodes : S_Transactioncode[] = await this.httpClient.get<S_Transactioncode[]>(`${environment.backend_baseurl}/leosurvey/survey/add/` + this.trcodecount).toPromise();
-
+    const trcodes : S_Transactioncode[] = await this.httpClient.get<S_Transactioncode[]>(`${environment.backend_baseurl}/leosurvey/createSurvey/` + this.trcodecount).toPromise();
     this.dataSource.data=[...trcodes];
   }
 
