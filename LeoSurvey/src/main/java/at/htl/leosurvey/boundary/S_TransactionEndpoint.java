@@ -20,7 +20,7 @@ public class S_TransactionEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/transactioncode")
-    public Response findAllSurveys(){
+    public Response findAllCodes(){
         final List<S_Transaction> codes = transactionRepository.listAll();
         return Response.ok(codes).build();
     }

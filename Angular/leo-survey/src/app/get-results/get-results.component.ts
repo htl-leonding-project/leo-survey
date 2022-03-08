@@ -37,9 +37,7 @@ export class GetResultsComponent implements OnInit {
   hidden: boolean = true;
 
   constructor(private httpClient: HttpClient, public service: LeosurveyService) {
-    this.questionnaires = [];
     this.questions = [];
-    this.chosenOptions = [];
     this.answerOptions = [];
     this.options = [];
     this.answers = [];
@@ -59,9 +57,7 @@ export class GetResultsComponent implements OnInit {
     this.hidden = false;
     let survey: Survey = this.control.value;
 
-    this.questionnaires = await this.httpClient.get<Questionnaire[]>(`${environment.backend_baseurl}/leosurvey/questionnaire/` + survey.s_questionnaire.qn_id).toPromise();
     this.questions = await this.httpClient.get<Question[]>(`${environment.backend_baseurl}/leosurvey/questions/` + survey.s_questionnaire.qn_id).toPromise();
-    this.chosenOptions = await this.httpClient.get<ChosenOption[]>(`${environment.backend_baseurl}/leosurvey/chosenoptions/` + survey.s_questionnaire.qn_id).toPromise();
     this.options = await this.httpClient.get<AnswerOption[]>(`${environment.backend_baseurl}/leosurvey/options`).toPromise();
     this.answers = await this.httpClient.get<Answer[]>(`${environment.backend_baseurl}/leosurvey/answer`).toPromise();
 
