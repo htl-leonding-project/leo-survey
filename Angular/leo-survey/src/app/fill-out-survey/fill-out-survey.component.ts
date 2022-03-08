@@ -1,3 +1,4 @@
+import { S_Transactioncode } from './../../model/transactioncode';
 import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -33,6 +34,7 @@ export class FillOutSurveyComponent implements OnInit {
   transactioncode: String = '';
   disabled: Boolean = true;
   tanInvalid: Boolean = false;
+  codes: String[] = [];
 
   constructor(private httpClient: HttpClient, public service: LeosurveyService, public router: Router) {
     this.dataSource1 = new MatTableDataSource<FullQuestion>();
@@ -43,9 +45,11 @@ export class FillOutSurveyComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const questions : Question[] = await this.httpClient.get<Question[]>(`${environment.backend_baseurl}/leosurvey/questions`).toPromise();
     const options : AnswerOption[] = await this.httpClient.get<AnswerOption[]>(`${environment.backend_baseurl}/leosurvey/options`).toPromise();
+    const transactioncodes : S_Transactioncode[] = await this.httpClient.get<S_Transactioncode[]>(`${environment.backend_baseurl}/leosurvey/transactioncode`).toPromise();
 
     this.service.setQuestions(questions);
     this.service.setOptions(options);
+    this.service.setTrCodes(transactioncodes);
 
     for(let q of this.service.getQuestions()){
       this.answeroptions = [];
@@ -66,18 +70,15 @@ export class FillOutSurveyComponent implements OnInit {
   }
 
   async load(): Promise<void> {
-    let codes = this.service.getTrCodes();
-    codes.forEach(element => {
-      if (element.t_transactioncode != this.transactioncode || element.t_is_used == true) {
-        this.tanInvalid = true;
-        this.router.navigate(['/home'])
-      }else{
-        element.t_is_used = true;
-      }
-    });
-    this.dataSource1.data=[...this.service.getFullQuestions1()];
-    this.dataSource2.data=[...this.service.getFullQuestions2()];
-    this.dataSource3.data=[...this.service.getFullQuestions3()];
+    this.codes = this.service.getTrCodeStrings();
+    if(this.codes.includes(this.transactioncode) && this.service.isCodeUsed(this.transactioncode) == false){
+      this.service.setCodeToUsed(this.transactioncode);
+      this.disabled = false;
+      this.dataSource1.data=[...this.service.getFullQuestions1()];
+      this.dataSource2.data=[...this.service.getFullQuestions2()];
+      this.dataSource3.data=[...this.service.getFullQuestions3()];
+    }
+
 
   }
 

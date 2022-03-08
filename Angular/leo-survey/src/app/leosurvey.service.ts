@@ -71,4 +71,28 @@ export class LeosurveyService {
   getTrCodes(): S_Transactioncode[]{
     return this.trcodes;
   }
+  getTrCodeStrings(): String[]{
+    let codes = [];
+    this.trcodes.forEach(element => {
+      codes.push(element.t_transactioncode)
+    });
+    return codes;
+  }
+  setCodeToUsed(code: String) {
+    this.trcodes.forEach(element => {
+      if(element.t_transactioncode == code){
+        element.t_is_used = true;
+        console.log(element.t_is_used)
+      }
+    });
+  }
+  isCodeUsed(code: String): boolean {
+    var r = true;
+    this.trcodes.forEach(element => {
+      if(element.t_transactioncode == code && element.t_is_used == false){
+        r = false;
+      }
+    });
+    return r;
+  }
 }

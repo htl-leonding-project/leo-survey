@@ -31,7 +31,7 @@ public class S_TransactionRepository implements PanacheRepository<S_Transaction>
           Random r = new Random();
           String back = "";
           for(int i = 0; i <= amount; i++){
-               for(int o = 0; o < 16; o++){
+               for(int o = 0; o < 4; o++){
                     char c = (char)(r.nextInt(26) + 'a');
                     back += c;
                }
