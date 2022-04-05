@@ -1,13 +1,21 @@
-<mat-form-field (change)="disabled=false">
+<mat-form-field>
   <input
     type="text"
     matInput placeholder="Transactioncode"
     id="text"
     name="text"
     [(ngModel)]="transactioncode"
-    (ngModelChange)="load()"
   >
 </mat-form-field>
+<div id="btnSubmit2" >
+  <button
+    mat-raised-button color="secondary"
+    class="mdc-button mdc-button--outlined"
+    (click)="load()"
+    >Submit
+  </button>
+</div>
+
 
 <div id="btnSubmit" [ngStyle]="{'visibility':disabled === true ? 'hidden' : '' }">
   <button

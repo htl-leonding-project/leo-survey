@@ -19,13 +19,18 @@ import { GetResultsComponent } from './get-results/get-results.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CongratulationComponent } from './congratulation/congratulation.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HomepageComponent } from './homepage/homepage.component';
+import { NewSurveyComponent } from './new-survey/new-survey.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     AppComponent,
     FillOutSurveyComponent,
     GetResultsComponent,
-    CongratulationComponent
+    CongratulationComponent,
+    HomepageComponent,
+    NewSurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ReactiveFormsModule,
     MatSelectModule,
     MatRadioModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,10 @@
 @startuml
 left to right direction
 node Browser <<angular>> as B
-node Client as C
 node LeoSurveyBackend <<quarkus>> as LB
-database PostgreSQL as D
+node PostgreSQL as LC
+
 
 B --> LB
-C --> LB
-LB --> D
+LB --> LC
 @enduml

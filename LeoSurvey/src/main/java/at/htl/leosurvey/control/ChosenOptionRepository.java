@@ -40,4 +40,9 @@ public class ChosenOptionRepository implements PanacheRepository<ChosenOption> {
         List<ChosenOption> chosenOptions = q.getResultList();
         return chosenOptions;
     }
+
+    public List<ChosenOption> getByTrCode(String trcode){
+        var co = this.find("transaction_code", trcode).list();
+        return co;
+    }
 }
