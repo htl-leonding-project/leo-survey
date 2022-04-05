@@ -18,7 +18,7 @@ export class LeosurveyService {
   private trcodes: S_Transactioncode[];
 
   constructor() {
-    this.questions = [] ;
+    this.questions = [];
     this.options = [];
     this.fullquestions = [];
     this.howoften = [];
