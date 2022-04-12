@@ -1,0 +1,18 @@
+= Aufgaben 2021/2022 Semester 2 Tischler LeoSurvey
+
+== Backend
+
+* Erstellen einer Survey
+* Automatisches generieren der Transactionscodes
+
+== Frontend
+
+* Verbesserung des User-Erlebnisses (Congratulations-Page)
+* Page zum Erstellen von Surveys
+* Auswertung überarbeitet
+
+== Misc
+
+* Deployment auf VM
+* Integrieren von Github-Packages (-> https://github.com/FabianTischler/leosurvey-packages[Github-Packages Repo] )
+* Erstellen der Project-Award Präsentation für SYP und Diplomarbeit
