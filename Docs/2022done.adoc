@@ -7,7 +7,7 @@
 
 == Frontend
 
-* Verbesserung des User-Erlebnisses (Congratulations-Page)
+* Transactionscode-Kontrolle
 * Page zum Erstellen von Surveys
 * Auswertung überarbeitet
 
